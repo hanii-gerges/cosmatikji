@@ -15,22 +15,25 @@ class CreateProductsTable extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('subcategory_id');
             $table->string('name');
-            $table->double('price');
+            $table->decimal('price' , 10 , 6);
             $table->string('image');
             $table->longText('description');
             $table->timestamps();
+
+            $table->foreign('subcategory_id')->references('id')->on('sub_categories')->onDelete('cascade');
         });
 
-        Schema::create('products_users', function (Blueprint $table) {
+            Schema::create('products_users', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('user_id')->unsigned();
-            $table->bigInteger('product_id')->unsigned();
+            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('product_id');
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
-        });
+         });
     }
 
     /**
