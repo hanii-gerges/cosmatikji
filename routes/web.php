@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\CategoryController;
+use App\Models\Category;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,6 +32,10 @@ Route::middleware(['auth:sanctum', 'verified' , 'authadmin'])->get('/admin/dashb
 Route::get('home' , [AdminController::class , 'HomePage'])->name('home');
 Route::get('logout' , [Controller::class , 'logout'])->name('logout');
 Route::get('create/employee/' , [AdminController::class , 'CreateEmployee'])->name('create.emp');
+
+//Category Routes
+Route::get('categories',[CategoryController::class,'showCategory']);
+
 
 
 
