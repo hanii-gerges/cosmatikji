@@ -16,10 +16,10 @@ class SubCategory extends Model
     ];
 
 
-    // function category()
-    // {
-    //     return $this->belongsTo(Category::class);
-    // }
+    function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
 
     function products()
     {

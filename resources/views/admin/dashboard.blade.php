@@ -1,7 +1,7 @@
 @extends('admin.layout')
 
 @section('content')
-       
+
         <div class="page_content">
             <div class="page_content">
                 <div class="home_statics text-center">
@@ -12,7 +12,7 @@
 
                         <h3>عددالمستخدمين</h3>
 
-                        <p class="h4">55</p>
+                        <p class="h4">{{$users}}</p>
                     </div>
 
                     <div style="background-color: #34495e">
@@ -20,14 +20,14 @@
 
                         <h3>عدد المنتجات</h3>
 
-                        <p class="h4">55</p>
+                        <p class="h4">{{$products}}</p>
                     </div>
                     <div style="background-color: #00adbc">
                         <span class="bring_right glyphicon glyphicon-user"></span>
 
                         <h3>عدد الموظفين</h3>
 
-                        <p class="h4">55</p>
+                        <p class="h4">{{$employees}}</p>
                     </div>
                     <div style="background-color: #f39c12">
                         <span class="bring_right glyphicon glyphicon-export"></span>
