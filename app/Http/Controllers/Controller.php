@@ -11,9 +11,4 @@ class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
-    function logout()
-    {
-        Auth::logout();
-        return redirect()->route('login');
-    }
 }

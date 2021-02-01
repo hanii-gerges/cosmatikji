@@ -15,14 +15,13 @@
     <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-    {{-- toastr css link --}}
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">
-
+      {{-- toastr css link --}}
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">
 </head>
 <body>
 <div class="container-fluid">
     <!--Start header-->
-   @include('admin.body.header')
+   @include('employee.body.header')
     <!--/End header-->
 
     <!--Start body container section-->
@@ -35,14 +34,14 @@
 
                 <h1 class="h3">{{Auth::user()->name}}</h1>
 
-                <p><a href="{{route('admin.profile')}}">بيانات المستخدم</a></p>
-                <p><a href="{{route('admin.add.photo')}}">اضافة صورة</a></p>
-                <p><a href="{{route('admin.change.password')}}">تغيير كلمة المرور</a></p>
+                <p><a href="{{route('employee.profile')}}">بيانات المستخدم</a></p>
+                <p><a href="{{route('employee.add.photo')}}">اضافة صورة</a></p>
+                <p><a href="{{route('employee.change.password')}}">تغيير كلمة المرور</a></p>
 
                 <p><a href="{{route('logout')}}">تسجيل الخروج</a></p>
             </div>
             <div class="who_is_online">
-                <h3>العامليين حاليا علي النظام</h3>
+                <h3>العامليين حاليا على النظام</h3>
 
                 <div class="employee_online">
                     <img src="{{asset('back-end/img/user.jpg')}}" class="img-circle bring_right">
@@ -53,11 +52,12 @@
                 </div>
 
 
+
             </div>
         </div>
         <!--/End left sidebar-->
         <!--Start Side bar main menu-->
-        @include('admin.body.sidebar')
+        @include('employee.body.sidebar')
 
         <!--/End side bar main menu-->
 
@@ -114,8 +114,6 @@ switch(type)
 @endif
 
 </script>
-
-
 </body>
 
 </html>
