@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\AdminController;
+<<<<<<< HEAD
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\SubCategoryController;
@@ -15,6 +16,10 @@ use App\Models\SubCategory;
 
 
 
+=======
+use App\Http\Controllers\CategoryController;
+use App\Models\Category;
+>>>>>>> a3dbc06813b9cb27d3bf1c65fb3fef29f01a4f85
 
 /*
 |--------------------------------------------------------------------------
@@ -95,6 +100,10 @@ Route::get('employee/view/all/sub/categories' , [SubCategoryController::class , 
 Route::get('employee/edit/sub/category/{id}' , [SubCategoryController::class , 'EditSubCat'])->name('edit.subCat');
 Route::post('employee/update/sub/category/{id}' , [SubCategoryController::class , 'UpdateSubCat'])->name('update.subCat');
 Route::get('employee/delete/sub/category/{id}' , [SubCategoryController::class , 'DeleteSubCat'])->name('delete.subCat');
+
+
+//Category Routes
+Route::get('categories',[CategoryController::class,'showCategory']);
 
 
 
