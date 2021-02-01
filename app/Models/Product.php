@@ -15,7 +15,7 @@ class Product extends Model
         return $this->belongsToMany(User::class , 'products_users');
     }
 
-    function subcategory()
+    function subCategory()
     {
         return $this->belongsTo(SubCategory::class);
     }

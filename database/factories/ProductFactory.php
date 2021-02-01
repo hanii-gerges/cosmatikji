@@ -23,7 +23,7 @@ class ProductFactory extends Factory
     public function definition()
     {
         return [
-            'subcategory_id' => SubCategory::all()->random()->id,
+            'sub_category_id' => SubCategory::all()->random()->id,
             'name' => $this->faker->domainWord,
             'price' => 20.5,
             'description' => $this->faker->realText(50),

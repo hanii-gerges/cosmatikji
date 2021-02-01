@@ -175,7 +175,7 @@
 <!--Header End-->
 
 <!--Slider Start-->
-<section id="slider-sec" class="slider-sec parallax" style="background: url('shop/img/product-listing-banner.jpg');">
+<section id="slider-sec" class="slider-sec parallax" style="background: url('{{ asset('shop/img/product-listing-banner.jpg')}}');">
     <div class="overlay text-center d-flex justify-content-center align-items-center">
         <div class="slide-contain">
             <h4>Product Listing</h4>
@@ -332,10 +332,11 @@
 <script src="{{asset('vendor/js/extensions/revolution.extension.video.min.js')}}"></script>
 <!-- google map-->
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCJRG4KqGVNvAPY4UcVDLcLNXMXk2ktNfY"></script>
-<script src="shop/js/map.js"></script>
+<script src="{{ asset('shop/js/map.js') }}></script>
 <!--Tilt Js-->
 <!-- custom script-->
 <script src="{{asset('vendor/js/bootstrap-input-spinner.js')}}"></script>
+<script src="{{asset('vendor/js/swiper.min.js') }}"></script>
 <script src="{{asset('shop/js/nouislider.min.js')}}"></script>
 <script src="{{asset('shop/js/script.js')}}"></script>
 

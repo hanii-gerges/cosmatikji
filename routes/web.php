@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ProductController;
 use App\Models\Category;
 
 /*
@@ -34,8 +35,10 @@ Route::get('logout' , [Controller::class , 'logout'])->name('logout');
 Route::get('create/employee/' , [AdminController::class , 'CreateEmployee'])->name('create.emp');
 
 //Category Routes
-Route::get('categories',[CategoryController::class,'showCategory']);
+Route::get('categories/{category}',[CategoryController::class,'showCategory']);
+Route::get('categories/{category}/subcategories/{subcategory}',[CategoryController::class,'showSubCategory']);
 
 
-
+//Product Routes
+Route::get('products/{product}',[ProductController::class,'show']);
 

@@ -12,7 +12,8 @@ class CategoryController extends Controller
     {
         $products = SubCategory::where('category_id',$category->id)->first()->products;
         
-        return view('categories.show');
+        return view('categories.show')->with('category',$category)
+                                      ->with('products',$products);
     }
 
     public function showSubCategory(Category $category,$subcategory_id)
