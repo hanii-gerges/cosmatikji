@@ -27,6 +27,8 @@
     <link href="{{asset('shop/css/range-slider.css')}}" rel="stylesheet">
     <link href="{{asset('shop/css/blog.css')}}" rel="stylesheet">
     <link href="{{asset('shop/css/style.css')}}" rel="stylesheet">
+    <link href="{{asset('shop/css/cart.css')}}" rel="stylesheet">
+
 </head>
 
 <body data-spy="scroll" data-target=".navbar" data-offset="90">
@@ -51,9 +53,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-12 col-lg-6 mt-auto mb-auto">
-                    <ul class="d-flex mb-0 top-info">
-                        <li class="c-links d-none d-lg-block"><span><i class="lab la-whatsapp"></i></span><a href="#">+(34)609 331754</a></li>
-                    </ul>
+                   
                 </div>
                 <div class="col-12 col-lg-6 mt-auto mb-auto d-lg-flex justify-content-center justify-content-lg-end">
                     <ul class="shop-details d-flex">
@@ -84,8 +84,6 @@
                 <div class="col-6 d-none d-lg-flex justify-content-lg-center align-items-lg-center">
                     <div class="collapse navbar-collapse" id="megaone">
                         <ul class="navbar-nav ml-auto mr-auto">
-                            <li><a class="nav-link active" href="../index-food-shop.html">Home</a></li>
-                            <li><a class="nav-link" href="about-us.html">About Us</a></li>
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     Pages <i class="fas fa-angle-down"></i>
@@ -97,9 +95,48 @@
                                     <a class="dropdown-item" href="standalone.html"><i class="las la-angle-double-right"></i> Standalone</a>
                                 </div>
                             </li>
-                            <li><a class="nav-link" href="product-listing.html">Shop</a></li>
-                            <li><a class="nav-link" href="standard-blog.html">Blogs</a></li>
-                            <li><a class="nav-link" href="contact-us.html">Contact</a></li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Pages <i class="fas fa-angle-down"></i>
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="product-listing.html"><i class="las la-angle-double-right"></i> Product Listing</a>
+                                    <a class="dropdown-item" href="product-detail.html"><i class="las la-angle-double-right"></i> Product Detail</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="standalone.html"><i class="las la-angle-double-right"></i> Standalone</a>
+                                </div>
+                            </li><li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Pages <i class="fas fa-angle-down"></i>
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="product-listing.html"><i class="las la-angle-double-right"></i> Product Listing</a>
+                                    <a class="dropdown-item" href="product-detail.html"><i class="las la-angle-double-right"></i> Product Detail</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="standalone.html"><i class="las la-angle-double-right"></i> Standalone</a>
+                                </div>
+                            </li><li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Pages <i class="fas fa-angle-down"></i>
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="product-listing.html"><i class="las la-angle-double-right"></i> Product Listing</a>
+                                    <a class="dropdown-item" href="product-detail.html"><i class="las la-angle-double-right"></i> Product Detail</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="standalone.html"><i class="las la-angle-double-right"></i> Standalone</a>
+                                </div>
+                            </li><li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Pages <i class="fas fa-angle-down"></i>
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="product-listing.html"><i class="las la-angle-double-right"></i> Product Listing</a>
+                                    <a class="dropdown-item" href="product-detail.html"><i class="las la-angle-double-right"></i> Product Detail</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="standalone.html"><i class="las la-angle-double-right"></i> Standalone</a>
+                                </div>
+                            </li>
+                            <li><a class="nav-link active" href="../index-food-shop.html">الرئيسية</a></li>
                         </ul>
                     </div>
                 </div>
@@ -123,30 +160,18 @@
             <nav class="side-nav w-100">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="../index-food-shop.html">Home</a>
+                        <a class="nav-link" href="../index-food-shop.html">رئيسية</a>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a class="nav-link" href="product-listing.html">تسوّق</a>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a class="nav-link" href="about-us.html">من نحن</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="about-us.html">About Us</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Pages <i class="fas fa-angle-down"></i>
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
-                            <a class="dropdown-item" href="product-listing.html"><i class="las la-angle-double-right"></i> Product Listing</a>
-                            <a class="dropdown-item" href="product-detail.html"><i class="las la-angle-double-right"></i> Product Detail</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#"><i class="las la-angle-double-right"></i> Standalone</a>
-                        </div>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="product-listing.html">Shop</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="standard-blog.html">Blogs</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="contact-us.html">Contact Us</a>
+                        <a class="nav-link" href="contact-us.html">اتصل بنا</a>
                     </li>
                 </ul>
             </nav>
@@ -182,7 +207,7 @@
             <div class="crumbs">
                 <nav aria-label="breadcrumb" class="breadcrumb-items">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="../index-food-shop.html">Home</a></li>
+                        <li class="breadcrumb-item"><a href="../index-food-shop.html">الرئيسية</a></li>
                         <li class="breadcrumb-item"><a href="product-listing.html">Product Listing</a></li>
                     </ol>
                 </nav>
@@ -332,13 +357,156 @@
 <script src="{{asset('vendor/js/extensions/revolution.extension.video.min.js')}}"></script>
 <!-- google map-->
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCJRG4KqGVNvAPY4UcVDLcLNXMXk2ktNfY"></script>
-<script src="{{ asset('shop/js/map.js') }}></script>
+<script src="{{ asset('shop/js/map.js') }}"></script>
 <!--Tilt Js-->
 <!-- custom script-->
 <script src="{{asset('vendor/js/bootstrap-input-spinner.js')}}"></script>
 <script src="{{asset('vendor/js/swiper.min.js') }}"></script>
 <script src="{{asset('shop/js/nouislider.min.js')}}"></script>
 <script src="{{asset('shop/js/script.js')}}"></script>
+<script src="{{asset('shop/js/cart.js')}}"></script>
+<script>
+    $(document).ready(function() {
+        recalculateCart();
+        updateQuantity('.pass-quantity input');
+
+        /* Set rates */
+        var taxRate = 0.00;
+        var fadeTime = 300;
+    
+        $('.rounded-pill').click(function() {
+            addToCart(this);
+        });
+        
+        $('.remove-item button').click(function() {
+            removeItem(this);
+        });
+
+        /* Assign actions */
+        $('.pass-quantity input').change(function() {
+            updateQuantity(this);
+            addToCart(this);
+        });
+
+        $('#shipping').change(function() {
+            recalculateCart();
+        });
+
+
+        /* Recalculate cart */
+        function recalculateCart() {
+            var subtotal = 0;
+    
+            /* Sum up row totals */
+            $('.item').each(function() {
+            subtotal += parseFloat($(this).children('.product-line-price').text());
+            });
+    
+            /* Calculate totals */
+            var shipping = Number($('#shipping').children('option:selected').val());
+            //console.log('shipping '+ shipping);
+            //console.log('subtotal ' + subtotal);
+            var total = Number(subtotal + shipping);
+            //console.log('total ' + total);
+    
+            /* Update totals display */
+            $('.totals-value').fadeOut(fadeTime, function() {
+            $('#cart-subtotal').html(subtotal.toFixed(2));
+            $('.cart-total').html(total.toFixed(2));
+            if (total == 0) {
+                $('.checkout').fadeOut(fadeTime);
+            } else {
+                $('.checkout').fadeIn(fadeTime);
+            }
+            $('.totals-value').fadeIn(fadeTime);
+            });
+        }
+
+        /* Update quantity */
+        function updateQuantity(quantityInput) {
+            /* Calculate line price */
+            var productRow = $(quantityInput).parent().parent();
+            var price = parseFloat(productRow.children('.product-price').text());
+            var quantity = $(quantityInput).val();
+            var linePrice = price * quantity;
+    
+            /* Update line price display and recalc cart totals */
+            productRow.children('.product-line-price').each(function() {
+                $(this).fadeOut(fadeTime, function() {
+                    $(this).text(linePrice.toFixed(2));
+                    recalculateCart();
+                    $(this).fadeIn(fadeTime);
+                });
+            });
+    
+        }
+    
+        function addToCart(addButton) {
+            var productId = $(addButton).parent().parent().children().children('input').attr('id');
+            var productCount = $(addButton).parent().parent().children().children('input').val();
+            var url = "/cartitems/addToCart";
+            console.log(productId);
+            console.log(productCount);
+
+            //if (confirm('Are you sure you want to Delete Ad ?')) {
+            $.ajax({
+            type: "POST",
+            url: url,
+            data: { productId: productId,
+                    productCount: productCount ,
+                    "_token": "{{ csrf_token() }}",
+                    },
+            success: function (data) {
+                console.log(data);
+        
+            },
+            error: function (data) {
+                console.log('Error:', data);
+            }
+            });
+    
+        //}
+        //else return false;
+        
+        }
+
+        /* Remove item from cart */
+        function removeItem(removeButton) {
+            var productId = $(removeButton).attr('id');
+            var itemId = $(removeButton).parent().parent().attr('id');
+            //console.log(itemId);
+            var url = "/cartitems/removeFromCart";
+
+            $.ajax({
+                type: "DELETE",
+                url: url,
+                data: { productId: productId,
+                        itemId: itemId,
+                        "_token": "{{ csrf_token() }}",
+                        },
+                success: function (data) {
+                    console.log(data);
+            
+                },
+                error: function (data) {
+                    console.log('Error:', data);
+                }
+                });
+        
+
+            /* Remove row from DOM and recalc cart total */
+            var productRow = $(removeButton).parent().parent();
+            productRow.slideUp(fadeTime, function() {
+            productRow.remove();
+            recalculateCart();
+            });
+        }
+        
+  
+    });
+</script>
+
+
 
 </body>
 </html>

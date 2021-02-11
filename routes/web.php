@@ -3,8 +3,11 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\CartController;
+use App\Http\Controllers\CartItemController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SubCategoryController;
 use App\Models\User;
@@ -105,4 +108,15 @@ Route::get('categories/{category}/subcategories/{subcategory}',[CategoryControll
 
 //Product Routes
 Route::get('products/{product}',[ProductController::class,'show']);
+
+//Cart Routes
+Route::get('carts/{cart}',[CartController::class,'show']);
+
+//CartItem Routes
+Route::post('cartitems/addToCart',[CartItemController::class,'addToCart']);
+Route::delete('cartitems/removeFromCart',[CartItemController::class,'removeFromCart']);
+
+//Order Routes
+Route::get('orders/create',[OrderController::class,'create']);
+Route::post('orders',[OrderController::class,'store']);
 

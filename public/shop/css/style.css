@@ -61,7 +61,7 @@
     border-right: 0px solid white;
 }
 ::-webkit-scrollbar-thumb {
-    background: #79a207;
+    background: #c4496f;
     width: 0;
     height: 25%;
 }
@@ -74,9 +74,9 @@ body{
 }
 /* background color */
 .bg-black{background: #2d2d2d;}
-.bg-yellow {background-color: #79a207;}
+.bg-yellow {background-color: #c4496f;}
 /* text-color */
-.main-color{color: #79a207;}
+.main-color{color: #c4496f;}
 
 /*parallax disable*/
 .parallax-disable{
@@ -132,7 +132,7 @@ text-decoration: none;
     transition: .5s ease;
 }
 .upper-nav .top-info li a:hover{
-    color: #79a207;
+    color: #c4496f;
 }
 
 .upper-nav .shop-user-details{
@@ -257,7 +257,7 @@ header{
     padding-right: 10px;
 }
 .navbar-simple .navbar-nav .nav-link:hover {
-    color: #79a207;
+    color: #c4496f;
 }
 .navbar-simple .navbar-nav .nav-item:last-child .nav-link{
     padding-right: 0;
@@ -300,7 +300,7 @@ header .navbar-simple .fixed-nav-items{
      transition: .5s ease;
 }
 .shop-details li a:hover{
-    color: #79a207;
+    color: #c4496f;
 }
 .shop-details li a i{
   /*padding: 0 10px;*/
@@ -318,7 +318,7 @@ header .navbar-simple .fixed-nav-items{
     transition: .5s ease;
 }
 .dropdown-menu .dropdown-item:hover{
-    color: #79a207;
+    color: #c4496f;
 }
 .side-menu .dropdown-menu{
     position: relative !important;
@@ -368,7 +368,7 @@ header .navbar-simple .fixed-nav-items{
     -webkit-transform: scaleX(0);
     -ms-transform: scaleX(0);
     transform: scaleX(0);
-    background: #79a207;
+    background: #c4496f;
     visibility: hidden;
     opacity: 0;
 }
@@ -645,7 +645,7 @@ header .navbar-simple .fixed-nav-items{
     transition: background-color .5s ease;
 }
 .social-icons-simple li a:hover{
-    background-color: #79a207;
+    background-color: #c4496f;
     color: #fff;
 }
 
@@ -694,7 +694,7 @@ header .navbar-simple .fixed-nav-items{
     display: inline-block;
 }
 .heading-details .heading i{
-    color: #79a207;
+    color: #c4496f;
     font-size: 40px;
 }
 .padding-bottom{
@@ -717,7 +717,7 @@ header .navbar-simple .fixed-nav-items{
     opacity: .8;
 }
 .web-btn{
-    background-color: #79a207;
+    background-color: #c4496f;
     color: #FFFFFF;
     border-radius: 0;
     padding: 8px 25px;
@@ -733,8 +733,8 @@ header .navbar-simple .fixed-nav-items{
 }
 .web-trans-btn{
     background-color: transparent;
-    color: #79a207;
-    border: solid 1px #79a207;
+    color: #c4496f;
+    border: solid 1px #c4496f;
     border-radius: 0;
     padding: 8px 25px;
     font-family: 'Poppins', sans-serif;
@@ -743,7 +743,7 @@ header .navbar-simple .fixed-nav-items{
     transition: .8s ease;
 }
 .web-trans-btn:hover{
-    background-color: #79a207;
+    background-color: #c4496f;
     color: #fff;
 }
 .web-dark-btn{
@@ -759,8 +759,8 @@ header .navbar-simple .fixed-nav-items{
 }
 .web-dark-btn:hover{
     background-color: transparent;
-    color: #79a207;
-    border: solid 1px #79a207;
+    color: #c4496f;
+    border: solid 1px #c4496f;
 }
 .btn-view{
     background-color: #f8f9faad;
@@ -775,8 +775,8 @@ header .navbar-simple .fixed-nav-items{
     transition: .8s ease;
 }
 .btn-view:hover{
-    background-color: #79a207;
-    border: solid 1px #79a207;
+    background-color: #c4496f;
+    border: solid 1px #c4496f;
     color: #fff;
 }
 /* ===================================
@@ -793,7 +793,7 @@ header .navbar-simple .fixed-nav-items{
 }
 .btn-slider{
     padding:8px 30px;
-    background-color: #79a207;
+    background-color: #c4496f;
     color: #fff;
     border-radius: 0;
     text-decoration: none;
@@ -924,7 +924,7 @@ header .navbar-simple .fixed-nav-items{
     color: #fff;
 }
 .revicon li:hover a{
-    background-color: #79a207;
+    background-color: #c4496f;
 
 }
 
@@ -1010,7 +1010,7 @@ header .navbar-simple .fixed-nav-items{
     font-family: 'Poppins', sans-serif;
 }
 .shop-card-window .mini-bag .bag-item:hover .item-details .item-name{
-    color: #79a207;
+    color: #c4496f;
 }
 .shop-card-window .mini-bag .bag-item .item-details .item-qty{
     font-size: 14px;
@@ -1051,7 +1051,7 @@ header .navbar-simple .fixed-nav-items{
     margin-bottom: 20px;
     font-family: Poppins, sans-serif;
     display: block;
-    color: #79a207;
+    color: #c4496f;
     font-weight: 500;
 }
 .shop-card-window .shop-card-window-content .bag-btn .total span{
@@ -1059,7 +1059,7 @@ header .navbar-simple .fixed-nav-items{
 }
 .shop-card-window .shop-card-window-content .bag-btn .web-btn:hover{
     background-color: transparent;
-    color: #79a207;
+    color: #c4496f;
 }
 
 /* ===================================
@@ -1070,7 +1070,7 @@ header .navbar-simple .fixed-nav-items{
 
 .open_search {
     cursor: pointer;
-    color: #79a207;
+    color: #c4496f;
     display: inline-block;
     position: relative;
 }
@@ -1107,7 +1107,7 @@ header .navbar-simple .fixed-nav-items{
     height: 100%;
     width: 100%;
 }
-.search_block input,.search_block select,.search_block textarea {background-color: #79a207; font-size: 20px;}
+.search_block input,.search_block select,.search_block textarea {background-color: #c4496f; font-size: 20px;}
 .search_block textarea::-webkit-input-placeholder {color: #FFFFFF !important;}
 .search_block textarea::-moz-placeholder {color: #FFFFFF !important;}
 .search_block textarea:-ms-input-placeholder {color: #FFFFFF !important;}
@@ -1132,7 +1132,7 @@ header .navbar-simple .fixed-nav-items{
     box-shadow: none !important;
 }
 .search_box {
-    background-color: #79a207;
+    background-color: #c4496f;
     opacity: 0;
     display: inline-block;
     padding: 10px;
@@ -1149,7 +1149,7 @@ header .navbar-simple .fixed-nav-items{
 }
 
 .search_box .search_input {
-    border: 3px solid #79a207;
+    border: 3px solid #c4496f;
     border-bottom: 1px solid;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
@@ -1342,7 +1342,7 @@ input, select, textarea {margin :0;}
     right: 0;
     top: 0;
     bottom: 0;
-    background-color: #79a207;
+    background-color: #c4496f;
     color: #FFFFFF;
     font-size: 14px;
     display: flex;
@@ -1372,7 +1372,7 @@ input, select, textarea {margin :0;}
 }
 .mini-services .mini-service-card .service-icon i{
     font-size: 40px;
-    color: #79a207;
+    color: #c4496f;
     transition: .5s ease;
 }
 .mini-services .mini-service-card:hover .service-icon i{
@@ -1382,7 +1382,7 @@ input, select, textarea {margin :0;}
 .mini-services .mini-service-card .mini-service-heading{
     font-size: 16px;
     font-weight: 500;
-    color: #79a207;
+    color: #c4496f;
     font-family: 'Poppins', sans-serif;
     margin-bottom: 0;
     transition: .5s ease;
@@ -1416,7 +1416,7 @@ input, select, textarea {margin :0;}
     top: 0;
 }
 .banner .banner-heading{
-    color: #79a207;
+    color: #c4496f;
     font-size: 50px;
     font-family: Poppins, sans-serif;
     font-weight: 500;
@@ -1568,7 +1568,7 @@ input, select, textarea {margin :0;}
     transition: .5s ease;
 }
 .featured-items .featured-item-card:hover{
-    border: solid 1px #79a207;
+    border: solid 1px #c4496f;
     box-shadow: 1px 1px 15px #eee;
 }
 .featured-items .featured-item-card .item-img .item-overlay{
@@ -1616,7 +1616,7 @@ input, select, textarea {margin :0;}
     margin-bottom: 0;
 }
 .featured-items .featured-item-card:hover .item-detail .item-name{
-    color: #79a207;
+    color: #c4496f;
 }
 .featured-items .featured-item-card .item-detail ul{
     padding-left: 0;
@@ -1703,7 +1703,7 @@ input, select, textarea {margin :0;}
 .deal-banner .deal-detail .item-name{
     font-size: 30px;
     font-weight: 500;
-    color: #79a207;
+    color: #c4496f;
     margin-bottom: 10px;
     font-family: Poppins,sans-serif;
 }
@@ -1728,7 +1728,7 @@ input, select, textarea {margin :0;}
     padding: 15px;
 }
 .best-products .best-products-carousel .item:hover .product{
-    border: solid 1px #79a207;
+    border: solid 1px #c4496f;
 }
 .best-products .best-products-carousel .item .product .product-img{
     position: relative;
@@ -1777,7 +1777,7 @@ transform: rotate(10deg);
     color: #fff;
 }
 .best-products .best-products-carousel .item .product .product-img .overlay-img .overlay-content a:hover{
-    background-color: #79a207;
+    background-color: #c4496f;
 }
 .best-products .best-products-carousel .item .product .product-img .overlay-img .overlay-content a:hover i{
     color: #FFFFFF;
@@ -1799,7 +1799,7 @@ transform: rotate(10deg);
     transition: .5s ease;
 }
 .best-products .best-products-carousel .item:hover .product .product-detail .product-name{
-    color: #79a207;
+    color: #c4496f;
 }
 .best-products .best-products-carousel .item .product .product-detail .product-cat{
     font-family: Poppins,sans-serif;
@@ -1928,7 +1928,7 @@ transform: rotate(10deg);
     display: inline-block;
     margin: 0 auto;
     padding: 10px 9px 10px 10px;
-    border: solid 1px #79a207;
+    border: solid 1px #c4496f;
 
 }
 .testimonial-sec .testimonial-review .review-image img{
@@ -1970,7 +1970,7 @@ transform: rotate(10deg);
 .testimonial-sec .testimonial-review .client-info .client-name{
     font-family: 'Montserrat', sans-serif;
     font-size: 16px;
-    color: #79a207;
+    color: #c4496f;
     font-weight: 600;
     margin-bottom: 0;
     display: inline-block;
@@ -2002,14 +2002,14 @@ transform: rotate(10deg);
     left: -30px;
 }
 .testimonial-sec .test-btn:hover{
-    color: #79a207 !important;
+    color: #c4496f !important;
 }
 
 /* ===================================
       newsletter css
   ==================================== */
 .newsletter{
-    background-color: #79a207;
+    background-color: #c4496f;
     padding: 60px 0 50px 0;
 }
 .newsletter .newsletter-heading{
@@ -2061,7 +2061,7 @@ transform: rotate(10deg);
     margin-top: 50px;
 }
 .about-sec .services .service-card:hover .image-holder i{
-    color: #79a207;
+    color: #c4496f;
     transition: .5s ease;
     cursor: pointer;
 }
@@ -2083,7 +2083,7 @@ transform: rotate(10deg);
     transition: .5s ease;
 }
 .about-sec .services .service-card:hover .service-heading{
-    color: #79a207;
+    color: #c4496f;
 }
 /* ===================================
       brand  css
@@ -2147,7 +2147,7 @@ transform: rotate(10deg);
 }
 
 .footer-social li a:hover{
-    background-color:#79a207;
+    background-color:#c4496f;
     color: #ffffff;
 }
 
@@ -2171,7 +2171,7 @@ transform: rotate(10deg);
     font-size: 23px;
     line-height: 47px;
     color: #fff;
-    background-color: #79a207;
+    background-color: #c4496f;
     display: none;
     height: 45px;
     width: 45px;
@@ -2190,7 +2190,7 @@ transform: rotate(10deg);
 }
 
 .scroll-top-arrow:hover {
-    background-color: #79a207; }
+    background-color: #c4496f; }
 
 
 
@@ -2254,7 +2254,7 @@ transform: rotate(10deg);
     left: 0;
     width: 100%;
     height: 100%;
-    background: #79a207;
+    background: #c4496f;
     opacity: 1;
     -webkit-animation: loader-bounce 2s infinite ease-in-out;
     animation: loader-bounce 2s infinite ease-in-out;
@@ -2547,7 +2547,7 @@ transform: rotate(10deg);
 }
 
 .product-body .product-list .product-single-price h4 .real-price{
-    color: #79a207;
+    color: #c4496f;
 }
 
 .pro-description{
@@ -2574,7 +2574,7 @@ transform: rotate(10deg);
 }
 
 .product-body .product-detail .product-checklist ul li i{
-    color: #79a207;
+    color: #c4496f;
 }
 .product-body .product-list .product-detail .product-single-price{
     margin-top: 20px;
@@ -2592,13 +2592,13 @@ transform: rotate(10deg);
 }
 
 .product-body .product-list .product-tags-list .breadcrumb .breadcrumb-item a{
-    color: #79a207;
+    color: #c4496f;
     font-size: 12px;
     font-family: Poppins, sans-serif;
 }
 
 .comma-separtor{
-    color: #79a207;
+    color: #c4496f;
     margin-left: 3px;
     margin-right: 3px;
 }
@@ -2636,7 +2636,7 @@ transform: rotate(10deg);
 
 .product-body .product-list  .share-product-details .share-product-icons li a:hover{
     color: #FFFFFF;
-    background-color: #79a207;
+    background-color: #c4496f;
 }
 .about_content .best-products .heading-details{
     padding-top: 80px;
@@ -2665,7 +2665,7 @@ transform: rotate(10deg);
 
 .nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
     color: white;
-    background-color: #79a207;
+    background-color: #c4496f;
     /*border-color: none;*/
 }
 
@@ -2766,7 +2766,7 @@ textarea:focus{
 
 /*Cart Number*/
 .input_plus_mins .qty .count {
-    color: #79a207;
+    color: #c4496f;
     display: inline-block;
     vertical-align: top;
     font-size: 24px;
@@ -2782,11 +2782,11 @@ textarea:focus{
     cursor: pointer;
     display: inline-block;
     vertical-align: center;
-    color: #79a207;
+    color: #c4496f;
     width: 26px;
     height: 26px;
     text-align: center;
-    border: solid 1px #79a207;
+    border: solid 1px #c4496f;
     /*border-radius: 50%;*/
     position: relative;
     transition: .5s ease;
@@ -2807,12 +2807,12 @@ textarea:focus{
     cursor: pointer;
     display: inline-block;
     vertical-align: center;
-    color: #79a207;
+    color: #c4496f;
     width: 26px;
     height: 26px;
     text-align: center;
     /*border-radius: 50%;*/
-    border: solid 1px #79a207;
+    border: solid 1px #c4496f;
     background-clip: padding-box;
     position: relative;
     transition: .5s ease;
@@ -2957,7 +2957,7 @@ textarea:focus{
     font-size: 18px;
     font-family: "Poppins", sans-serif;
     font-weight: bolder;
-    background-color: #79a207;
+    background-color: #c4496f;
     margin-bottom: 0;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -2993,7 +2993,7 @@ textarea:focus{
 }
 
 .cart_table .btn-close:hover i{
-    color: #79a207;
+    color: #c4496f;
 }
 
 .cart_table .shopping-product {
@@ -3215,7 +3215,7 @@ form.findus .form-control, form.findus textarea {
     margin-bottom: 15px;
 }
 .contact-sec .contact-detail .ex-detail .fly-text{
-    color: #79a207;
+    color: #c4496f;
     left: -49px;
     font-size: 14px;
     font-family: Poppins, "sans-serif";
@@ -3373,7 +3373,7 @@ form.findus .form-control, form.findus textarea {
     text-decoration: none;
 }
 .crumbs .breadcrumb li a:hover{
-    color: #79a207;
+    color: #c4496f;
 }
 /*crumbs end*/
 
@@ -3389,11 +3389,11 @@ form.findus .form-control, form.findus textarea {
     padding-right: 30px;
 }
 .standalone-detail .sub-heading{
-    color: #79a207;
+    color: #c4496f;
     margin-bottom: 20px;
 }
 .standalone-area .sub-heading{
-    color: #79a207;
+    color: #c4496f;
     margin-bottom: 8px;
 }
 .standalone-detail .heading{

@@ -24,7 +24,7 @@
                             {{--  <p class="pro-text text-center text-lg-right">{{ $product->description }}</p>  --}}
                         </div>
                     </div>
-                    <div class="row product-list product-detail">
+                    <div class="row product-list product-detail" id={{ $product->id }}>
 
                         <div class="col-12 col-lg-6 product-detail-slider">
                             <div class="wrapper">
@@ -52,7 +52,7 @@
 
                                 <div class="qty col-12 col-lg-3 d-lg-flex  align-items-lg-center d-inline-block">
                                     <span class="minus"><i class="las la-minus"></i></span>
-                                    <input type="number" class="count" name="qty" value="1">
+                                    <input type="number" class="count" id="{{ $product->id }}" name="qty" value="1">
                                     <span class="plus"><i class="las la-plus"></i></span>
                                 </div>
                                 <div class="col-12 col-lg-9">
@@ -385,5 +385,6 @@
     <!--END LATEST ARRIVALS-->
 </div>
 <!-- END HEADING SECTION -->
+
 
 @endsection

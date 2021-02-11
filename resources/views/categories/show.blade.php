@@ -29,13 +29,19 @@
                                                 <img src="{{ asset('shop/img/item8.jpg')}}">
                                                 <div class="item-overlay">
                                                     <div class="item-btns">
-                                                        <a href="product-detail.html" class="btn btn-view">عرض المنتج<i class="las la-shopping-bag"></i></a>
+                                                        <a href="/products/{{ $product->id }}" class="btn btn-view">عرض المنتج<i class="las la-shopping-bag"></i></a>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="item-detail">
                                                 <h4 class="item-name">{{ $product->name }}</h4>
-                                                
+                                                <ul class="reviews">
+                                                    <li><img src="https://img.icons8.com/android/15/000000/star.png"/></li>
+                                                    <li><img src="https://img.icons8.com/android/15/000000/star.png"/></li>
+                                                    <li><img src="https://img.icons8.com/android/15/000000/star.png"/></li>
+                                                    <li><img src="https://img.icons8.com/android/15/000000/star.png"/></li>
+                                                    <li><img src="https://img.icons8.com/android/15/000000/star.png"/></li>
+                                                </ul>
                                                 <p class="item-price">د{{ $product->price }}</p>
                                             </div>
                                         </div>
