@@ -28,13 +28,7 @@
 
                 <p class="h4">{{$products}}</p>
             </div>
-            <div style="background-color: #f39c12">
-                <span class="bring_right glyphicon glyphicon-export"></span>
-
-                <h3>الرسائل</h3>
-
-                <p class="h4">55</p>
-            </div>
+            
 
         </div>
     </div>

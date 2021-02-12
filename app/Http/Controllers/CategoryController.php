@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-<<<<<<< HEAD
+
 use Illuminate\Http\Request;
 use App\Models\Category;
 
@@ -17,6 +17,9 @@ class CategoryController extends Controller
     {
         $validationData = $request->validate([
             'name' => 'required',
+        ],
+        [
+            'name.required' => 'يرجى كتابة اسم الصنف الرئيسي',
             ]);
         Category::insert([
             'name' => $request->name
@@ -27,6 +30,7 @@ class CategoryController extends Controller
             );
             return redirect()->back()->with($notification);
     }
+
 
     function ViewAllCat()
     {
@@ -40,8 +44,16 @@ class CategoryController extends Controller
         return view('employee.categories.edit',compact('category'));
     }
 
+
     function UpdateCat(Request $request , $id)
     {
+        $validationData = $request->validate([
+            'name' => 'required',
+            ],
+            [
+                'name.required' => 'يرجى كتابة اسم الصنف الرئيسي',
+                ]);
+
         Category::where('id',$id)->update([
             'name' => $request->name
         ]);
@@ -51,6 +63,7 @@ class CategoryController extends Controller
         );
         return redirect()->back()->with($notification);
     }
+
 
     function DeleteCat($id)
     {
@@ -62,28 +75,94 @@ class CategoryController extends Controller
         return redirect()->back()->with($notification);
     }
 
-
-
-=======
-use App\Models\Category;
-use App\Models\SubCategory;
-use Illuminate\Http\Request;
-
-class CategoryController extends Controller
-{
-    public function showCategory(Category $category)
+    //////////////////////////////////////////////////////////////////////////////////////////////////
+    // Admin Functions
+    function AdminAddCat()
     {
-        $products = SubCategory::where('category_id',$category->id)->first()->products;
-        
-        return view('categories.show');
+        return view('admin.categories.create');
     }
 
-    public function showSubCategory(Category $category,$subcategory_id)
+    function AdminStoreCat(Request $request)
     {
-
-        $products = SubCategory::findOrFail($subcategory_id)->products;
-        return view('categories.show');
+        $validationData = $request->validate([
+            'name' => 'required',
+        ],
+        [
+            'name.required' => 'يرجى كتابة اسم الصنف الرئيسي',
+            ]);
+        Category::insert([
+            'name' => $request->name
+            ]);
+            $notification = array(
+                'message' => 'تم اضافة الصنف بنجاح',
+                'alert-type' => 'success'
+            );
+            return redirect()->back()->with($notification);
+    }
+    function AdminViewAllCat()
+    {
+        $categories = Category::paginate(5);
+        return view('admin.categories.view', compact('categories'));
     }
 
->>>>>>> a3dbc06813b9cb27d3bf1c65fb3fef29f01a4f85
+    function AdminEditCat($id)
+    {
+        $category = Category::find($id);
+        return view('admin.categories.edit',compact('category'));
+    }
+
+    function AdminUpdateCat(Request $request , $id)
+    {
+        $validationData = $request->validate([
+            'name' => 'required',
+            ],
+            [
+                'name.required' => 'يرجى كتابة اسم الصنف الرئيسي',
+                ]);
+
+        Category::where('id',$id)->update([
+            'name' => $request->name
+        ]);
+        $notification = array(
+            'message' => 'تم تعديل الصنف بنجاح',
+            'alert-type' => 'warning'
+        );
+        return redirect()->back()->with($notification);
+    }
+
+    function AdminDeleteCat($id)
+    {
+        $notification = array(
+            'message' => 'تم حذف الصنف بنجاح',
+            'alert-type' => 'error'
+        );
+        Category::where('id' , $id)->delete();
+        return redirect()->back()->with($notification);
+    }
+
+
 }
+
+// =======
+// use App\Models\Category;
+// use App\Models\SubCategory;
+// use Illuminate\Http\Request;
+
+// class CategoryController extends Controller
+// {
+//     public function showCategory(Category $category)
+//     {
+//         $products = SubCategory::where('category_id',$category->id)->first()->products;
+
+//         return view('categories.show');
+//     }
+
+//     public function showSubCategory(Category $category,$subcategory_id)
+//     {
+
+//         $products = SubCategory::findOrFail($subcategory_id)->products;
+//         return view('categories.show');
+//     }
+
+// >>>>>>> a3dbc06813b9cb27d3bf1c65fb3fef29f01a4f85
+// }

@@ -17,12 +17,11 @@ class CreateProductsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('subcategory_id');
             $table->string('name');
-            $table->decimal('price' , 10 , 6);
-            $table->string('image')->nullable();
+            $table->decimal('price' , 10 , 2);
             $table->longText('description');
             $table->timestamps();
 
-            $table->foreign('subcategory_id')->references('id')->on('sub_categories')->onDelete('cascade');
+             $table->foreign('subcategory_id')->references('id')->on('sub_categories')->onDelete('cascade');
         });
 
             Schema::create('products_users', function (Blueprint $table) {

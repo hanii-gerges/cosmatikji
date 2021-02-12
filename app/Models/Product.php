@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\User;
-
+use App\Models\MultiPic;
 class Product extends Model
 {
     use HasFactory;
@@ -18,5 +18,10 @@ class Product extends Model
     function subcategory()
     {
         return $this->belongsTo(SubCategory::class);
+    }
+
+    function multipic()
+    {
+        return $this->hasMany(MultiPic::class);
     }
 }

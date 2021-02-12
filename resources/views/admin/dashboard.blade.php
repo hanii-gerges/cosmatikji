@@ -7,7 +7,7 @@
                 <div class="home_statics text-center">
                     <h1 class="heading_title">احصائيات عامة للموقع</h1>
 
-                    <div style="background-color: #9b59b6">
+                    <div style="background-color: #e67e22">
                         <span class="bring_right glyphicon glyphicon-user"></span>
 
                         <h3>عددالمستخدمين</h3>
@@ -29,12 +29,20 @@
 
                         <p class="h4">{{$employees}}</p>
                     </div>
-                    <div style="background-color: #f39c12">
-                        <span class="bring_right glyphicon glyphicon-export"></span>
+                    <div style="background-color: #e74c3c">
+                        <span class="bring_right glyphicon glyphicon-remove"></span>
 
-                        <h3>عدد المبيعات</h3>
+                        <h3>طلبات غير مستلمه</h3>
 
-                        <p class="h4">55</p>
+                        <p class="h4">0</p>
+                    </div>
+
+                    <div style="background-color: #2ecc71">
+                        <span class="bring_right glyphicon glyphicon-ok"></span>
+
+                        <h3>طلبات مستلمه</h3>
+
+                        <p class="h4">0</p>
                     </div>
 
                 </div>

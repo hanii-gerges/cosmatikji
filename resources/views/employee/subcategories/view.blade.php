@@ -28,7 +28,7 @@
             <td>{{$subcategory->name}}</td>
             <td class="text-center">
                 <a href="{{route('edit.subCat',$subcategory->id)}}" class="glyphicon glyphicon-pencil text-info"></a>
-                <a href="{{route('delete.subCat',$subcategory->id)}}" class="glyphicon glyphicon-trash text-danger" onclick="return confirm('هل انتا متأكد من انك تريد حذف الموظف');"></a>
+                <a href="{{route('delete.subCat',$subcategory->id)}}" class="glyphicon glyphicon-trash text-danger" onclick="return confirm('هل انتا متأكد من انك تريد حذف الصنف الفرعي');"></a>
             </td>
         </tr>
             @endforeach

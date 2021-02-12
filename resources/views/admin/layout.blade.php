@@ -47,7 +47,7 @@
                 <div class="employee_online">
                     <img src="{{asset('back-end/img/user.jpg')}}" class="img-circle bring_right">
 
-                    <p>شركة النصائح الألكترونية</p>
+                    <p>شركة الملاحظات الرقمية</p>
 
                     <p>فريق برمجة و تطوير المواقع</p>
                 </div>

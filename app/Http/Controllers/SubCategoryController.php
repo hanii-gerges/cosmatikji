@@ -18,7 +18,12 @@ class SubCategoryController extends Controller
         $validationData = $request->validate([
             'cat_id' => 'required',
             'subname' => 'required'
-        ]);
+        ],
+    [
+            'cat_id.required' => 'يرجى ادخال رقم الصنف الرئيسي',
+            'subname.required' => 'يرجى كتابة اسم الصنف الفرعي'
+
+    ]);
 
         SubCategory::insert([
             'category_id' => $request->cat_id,
@@ -48,6 +53,16 @@ class SubCategoryController extends Controller
 
     function UpdateSubCat(Request $request , $id)
     {
+        $validationData = $request->validate([
+            'cat_id' => 'required',
+            'subname' => 'required'
+        ],
+        [
+                'cat_id.required' => 'يرجى ادخال رقم الصنف الرئيسي',
+                'subname.required' => 'يرجى كتابة اسم الصنف الفرعي'
+
+        ]);
+
         SubCategory::where('id',$id)->update([
             'category_id' => $request->cat_id,
             'name' => $request->subname
@@ -70,5 +85,88 @@ class SubCategoryController extends Controller
         );
         return redirect()->back()->with($notification);
     }
+
+    //////////////////////////////////////////////////////////////////////////////////////
+
+    // Admin SubCategory Functions
+    function AdminAddSubCat()
+    {
+        return view('admin.subcategories.create');
+    }
+
+    function AdminStoreSubCat(Request $request)
+    {
+        $validationData = $request->validate([
+            'cat_id' => 'required',
+            'subname' => 'required'
+        ],
+    [
+            'cat_id.required' => 'يرجى ادخال رقم الصنف الرئيسي',
+            'subname.required' => 'يرجى كتابة اسم الصنف الفرعي'
+
+    ]);
+
+        SubCategory::insert([
+            'category_id' => $request->cat_id,
+            'name' => $request->subname,
+        ]);
+        $notification = array(
+            'message' => 'تم اضافة الصنف الفرعي بنجاح',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->back()->with($notification);
+
+    }
+
+    function AdminViewAllSubCat()
+    {
+        $subcategories = SubCategory::paginate(5);
+        // $subcategories = DB::table('sub_categories')->latest()->first();
+        return view('admin.subcategories.view',compact('subcategories'));
+    }
+
+    function AdminEditSubCat($id)
+    {
+        $subcategory = SubCategory::find($id);
+        return view('admin.subcategories.edit',compact('subcategory'));
+    }
+
+    function AdminUpdateSubCat(Request $request , $id)
+    {
+        $validationData = $request->validate([
+            'cat_id' => 'required',
+            'subname' => 'required'
+        ],
+        [
+                'cat_id.required' => 'يرجى ادخال رقم الصنف الرئيسي',
+                'subname.required' => 'يرجى كتابة اسم الصنف الفرعي'
+
+        ]);
+
+        SubCategory::where('id',$id)->update([
+            'category_id' => $request->cat_id,
+            'name' => $request->subname
+        ]);
+        $notification = array(
+            'message' => 'تم تعديل الصنف الفرعي بنجاح',
+            'alert-type' => 'warning'
+        );
+
+        return redirect()->back()->with($notification);
+    }
+
+    function AdminDeleteSubCat($id)
+    {
+
+        SubCategory::where('id',$id)->delete();
+        $notification = array(
+            'message' => 'تم حذف الصنف بنجاح',
+            'alert-type' => 'error'
+        );
+        return redirect()->back()->with($notification);
+    }
+
+
 
 }

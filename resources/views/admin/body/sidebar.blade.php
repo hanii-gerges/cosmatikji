@@ -16,6 +16,33 @@
                     <li><a href="{{route('view.all.emp')}}">عرض الكل</a></li>
                 </ul>
             </li> --}}
+            <li><span class="glyphicon glyphicon-plus-sign"></span><a href="#">إدارة الأصناف الرئيسية</a>
+                <ul class="drop_main_menu">
+                    <li><a href="{{route('admin.create.cat')}}">إضافة جديد</a></li>
+                    <li><a href="{{route('admin.view.all.cat')}}">عرض الكل</a></li>
+                </ul>
+            </li>
+            <li><span class="glyphicon glyphicon-ok-sign"></span><a href="#">إدارة الأصناف الفرعية</a>
+                <ul class="drop_main_menu">
+                    <li><a href="{{route('admin.add.subCat')}}">إضافة جديد</a></li>
+                    <li><a href="{{route('admin.view.all.subCat')}}">عرض الكل</a></li>
+                </ul>
+            </li>
+            <li><span class="glyphicon glyphicon-ok"></span><a href="#">إدارة المنتجات</a>
+                <ul class="drop_main_menu">
+                    <li><a href="{{route('admin.add.product')}}">إضافة جديد</a></li>
+                    <li><a href="{{route('admin.add.multipic')}}">إضافة صور للمنتج</a></li>
+                    <li><a href="{{route('admin.view.all.product')}}">عرض الكل</a></li>
+                </ul>
+            </li>
+
+            <li><span class="glyphicon glyphicon-lock"></span><a href="#">إدارة الطلبات</a>
+                <ul class="drop_main_menu">
+                    <li><a href="#">عرض الطلبات غير المستلمة</a></li>
+                    <li><a href="#">عرض الطلبات المستلمة</a></li>
+                </ul>
+            </li>
+
             <li><span class="glyphicon glyphicon-envelope"></span><a href="#">عرض الرسائل</a></li>
 
         </ul>
