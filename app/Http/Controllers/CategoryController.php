@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cart;
 use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\SubCategory;
@@ -64,17 +65,35 @@ class CategoryController extends Controller
 
     public function showCategory(Category $category)
     {
-        $products = SubCategory::where('category_id',$category->id)->first()->products;
+        $cart = Cart::where('id',session()->get('cart'))->first();
+        if(!session()->has('cart'))
+        {
+            $cart = Cart::create();
+        }
+        $products = SubCategory::where('category_id',$category->id)->first()->products()->paginate(9);
+        $categories = Category::all();
         
         return view('categories.show')->with('category',$category)
-                                      ->with('products',$products);
+                                      ->with('categories',$categories)
+                                      ->with('products',$products)
+                                      ->with('cart',$cart);
     }
 
-    public function showSubCategory(Category $category,$subcategory_id)
+    public function showSubCategory(Category $category,SubCategory $subcategory)
     {
+        $cart = Cart::where('id',session()->get('cart'))->first();
+        if(!session()->has('cart'))
+        {
+            $cart = Cart::create();
+        }
+        $products = $subcategory->products()->paginate(9);
+        $categories = Category::all();
 
-        $products = SubCategory::findOrFail($subcategory_id)->products;
-        return view('categories.show');
+        return view('categories.show')->with('category',$category)
+                                      ->with('categories',$categories)
+                                      ->with('products',$products)
+                                      ->with('subcategory',$subcategory)
+                                      ->with('cart',$cart);
     }
 
 

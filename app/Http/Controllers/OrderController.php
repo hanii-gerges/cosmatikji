@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cart;
+use App\Models\Category;
 use App\Models\Order;
 use Illuminate\Http\Request;
 
@@ -9,7 +11,15 @@ class OrderController extends Controller
 {
     public function create()
     {
-        return view('orders.create');
+        $cart = Cart::where('id',session()->get('cart'))->first();
+        if(!session()->has('cart'))
+        {
+            $cart = Cart::create();
+        }
+        $categories = Category::all();
+        return view('orders.create')->with('cart',$cart)
+                                    ->with('categories',$categories);
+
     }
 
     public function store(Request $request)
@@ -25,7 +35,10 @@ class OrderController extends Controller
             'state' => 'required',
             'address' => 'required',
         ]);
-
+        if(Cart::where('id',session()->get('cart'))->first()->total === 0)
+        {
+            return redirect('/orders/create')->with('error','السلة الخاصة بك فارغة');
+        }
         Order::create([
             'cart_id' => session()->get('cart'),
             'firstName' => $request->firstName,
@@ -39,8 +52,6 @@ class OrderController extends Controller
         $request->session()->forget('item');
 
         return redirect('/orders/create')->with('success','تم ارسال الطلب بنجاح');
-
-
 
     }
 }

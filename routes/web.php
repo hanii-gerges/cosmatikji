@@ -111,6 +111,7 @@ Route::get('products/{product}',[ProductController::class,'show']);
 
 //Cart Routes
 Route::get('carts/{cart}',[CartController::class,'show']);
+Route::put('carts/addTotalToCart',[CartController::class,'addTotalToCart']);
 
 //CartItem Routes
 Route::post('cartitems/addToCart',[CartItemController::class,'addToCart']);
