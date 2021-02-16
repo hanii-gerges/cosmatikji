@@ -56,7 +56,7 @@
                                     <span class="plus"><i class="las la-plus"></i></span>
                                 </div>
                                 <div class="col-12 col-lg-9">
-                                    <button class="btn web-btn rounded-pill">اضف الى السلة</button>
+                                    <button class="btn web-btn rounded-pill" id="addToCart">اضف الى السلة</button>
                                 </div>
                             </div>
 
@@ -85,18 +85,18 @@
                         <div class="col-12 mt-4">
                             <div class="row no-gutters product-all-details">
 
-                                <ul class="col-12 nav nav-tabs" id="myTab" role="tablist">
-                                    <li class="col-4 nav-item">
+                                <ul class="col-12 nav nav-tabs text-lg-right justify-content-center" id="myTab" role="tablist">
+                                    {{--  <li class="col-4 nav-item">
                                         <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Project Description</a>
                                     </li>
                                     <li class="col-4 nav-item">
                                         <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Additional Information</a>
-                                    </li>
+                                    </li>  --}}
                                     <li class="col-4 nav-item">
-                                        <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Customer Reviews  (2)</a>
+                                        <div class="nav-link" id="contact-tab">التقييمات({{ $product->reviews->count() }})</a>
                                     </li>
                                 </ul>
-                                <div class="col-12 tab-content" id="myTabContent">
+                                {{--  <div class="col-12 tab-content" id="myTabContent">
                                     <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                                         <p class="product-tab-description text-center text-lg-left">If you are a small business and you are interested in small rebranding then this is a perfect plan for you, having Five years experience in Blogging, photographing, Disgning and love to cycling,Writting,Singing and Traveling around the world</p>
                                         <p class="product-tab-description text-center text-lg-left">If you are a small business and you are interested in small rebranding then this is a perfect plan for you, having Five years experience in Blogging, photographing, Disgning and love to cycling,Writting,Singing and Traveling around the world</p>
@@ -136,115 +136,88 @@
                                                 </table>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="tab-pane fade reviews" id="contact" role="tabpanel" aria-labelledby="contact-tab">
-
-                                        <div class="media">
-                                            <div class="row no-gutter">
-                                                <div class="col-12 col-lg-2 p-0">
-
-                                                    <div class="row no-gutters">
-                                                        <div class="col-12 d-flex  justify-content-center">
-                                                            <img src="img/p1.jpg" alt="Generic placeholder image">
-                                                        </div>
-                                                        <div class="col-12 d-flex mt-2 justify-content-center">
-                                                            <ul class="user-rating">
-                                                                <li><a href="#"><i class="lni-star-filled"></i></a></li>
-                                                                <li><a href="#"><i class="lni-star-filled"></i></a></li>
-                                                                <li><a href="#"><i class="lni-star-filled"></i></a></li>
-                                                                <li><a href="#"><i class="lni-star-filled"></i></a></li>
-                                                                <li><a href="#"><i class="lni-star"></i></a></li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-
+                                    </div>  --}}
+                                    <div class="reviews" id="contact" role="tabpanel">
+                                        @foreach ($product->reviews as $review)
+                                            
+                                        <div class="row media mt-2 justify-content-end">
+                                            
+                                            <div class="col-12 col-lg-10">
+                                                <div class="media-body ">
+                                                    <span class="text-center text-lg-right d-block">{{ $review->created_at }}</span>
+                                                    <h5 class="mb-2 text-center text-lg-right">{{ $review->name }}</h5>
+                                                    <p class="text-center text-lg-right">{{ $review->review }}</p>
                                                 </div>
-
-                                                <div class="col-12 col-lg-10 p-0">
-                                                    <div class="media-body ">
-                                                        <span class="text-center text-lg-left d-block">27 Aug 2017</span>
-                                                        <h5 class="mb-2 text-center text-lg-left">Media heading</h5>
-                                                        <p class="text-center text-lg-left">Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam.</p>
-                                                    </div>
-                                                </div>
-
                                             </div>
-                                        </div>
-                                        <div class="media">
-                                            <div class="row no-gutter">
-                                                <div class="col-12 col-lg-2 p-0">
-
-                                                    <div class="row no-gutters">
-                                                        <div class="col-12 d-flex  justify-content-center">
-                                                            <img src="img/p2.jpg" alt="Generic placeholder image">
-                                                        </div>
-                                                        <div class="col-12 d-flex mt-2 justify-content-center">
-                                                            <ul class="user-rating">
-                                                                <li><a href="#"><i class="lni-star-filled"></i></a></li>
-                                                                <li><a href="#"><i class="lni-star-filled"></i></a></li>
-                                                                <li><a href="#"><i class="lni-star-filled"></i></a></li>
-                                                                <li><a href="#"><i class="lni-star-filled"></i></a></li>
-                                                                <li><a href="#"><i class="lni-star"></i></a></li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-
+                                            <div class="col-12 col-lg-2">
+                                                
+                                                <div class="justify-content-center">
+                                                    <img src="{{ asset('shop/img/usericon.png') }}" alt="Generic placeholder image">
                                                 </div>
-
-                                                <div class="col-12 col-lg-10 p-0">
-                                                    <div class="media-body ">
-                                                        <span class="text-center text-lg-left d-block">27 Aug 2017</span>
-                                                        <h5 class="mb-2 text-center text-lg-left">Media heading</h5>
-                                                        <p class="text-center text-lg-left">Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam.</p>
-                                                    </div>
-                                                </div>
-
                                             </div>
+                                                
                                         </div>
-
+                                        <hr>
+                                        @endforeach
+                                        
                                         <div class="row pl-2 pr-2">
                                             <div class="col-12 d-flex mb-4 mt-3">
-                                                <h5 class="text-nowrap">Add Review</h5>
-                                                <hr class="w-100 ml-5"/>
+                                                <hr class="w-100 mr-5"/>
+                                                <h5 class="text-nowrap">اضف تقييم</h5>
+                                            </div>
+                                            <div id="result">
+                                                @if (count($errors)>0)
+                                                    @foreach($errors->all() as $error)
+                                                        <div class="alert alert-danger">
+                                                            {{$error}}
+                                                        </div>
+                                                    @endforeach
+                                                @endif
+            
+                                                @if (session('success'))
+                                                    <div class="alert alert-success">
+                                                        {{session('success')}}
+                                                    </div>
+                                                @endif
+            
+                                                @if (session('error'))
+                                                    <div class="col-12 alert alert-danger">
+                                                        {{session('error')}}
+                                                    </div>
+                                                @endif
+            
                                             </div>
                                             <div class="col-12">
-                                                <form class="getin_form border-form" id="register">
-                                                    <div class="row">
+                                                <form class="getin_form border-form" id="register" action="/reviews" method="POST">
+                                                    @csrf
+                                                    <div class="row justify-content-end">
                                                         <div class="col-md-6 col-sm-12">
                                                             <div class="form-group bottom35">
-                                                                <input type="text" class="form-control"  placeholder="Name*" required="" id="registerName">
+                                                                <input type="text" class="form-control text-right"  name="name" placeholder="الاسم" required="" id="registerName">
                                                             </div>
                                                         </div>
                                                         <div class="col-md-6 col-sm-12">
                                                             <div class="form-group bottom35">
-                                                                <input type="email" class="form-control" placeholder="Email*" required="" id="registerEmail">
+                                                                <input type="email" class="form-control text-right" name="email" placeholder="البريد الالكتروني" required id="registerEmail">
                                                             </div>
                                                         </div>
-                                                        <div class="col-12 col-lg-2 text-center text-lg-left">
-                                                            <h5 class="text-nowrap">Your Rating</h5>
-                                                        </div>
-                                                        <div class="col-12 col-lg-10 text-center text-lg-left">
-                                                            <ul class="user-rating">
-                                                                <li><a href="#"><i class="lni-star-filled"></i></a></li>
-                                                                <li><a href="#"><i class="lni-star-filled"></i></a></li>
-                                                                <li><a href="#"><i class="lni-star-filled"></i></a></li>
-                                                                <li><a href="#"><i class="lni-star-filled"></i></a></li>
-                                                                <li><a href="#"><i class="lni-star"></i></a></li>
-                                                            </ul>
+                                                        
+                                                        <div class="col-12 text-right">
+                                                            <h5 class="text-nowrap"></h5>
                                                         </div>
                                                         <div class="col-12">
                                                             <div class="form-group">
                                                                 <!--                                                                            <label for="comment">Your Rating:</label>-->
-                                                                <textarea class="form-control textareaclass" rows="5" id="comment" placeholder="Your Review"></textarea>
+                                                                <textarea class="form-control textareaclass text-right" rows="5" id="comment" name="review" placeholder="التقييم" required></textarea>
                                                             </div>
                                                         </div>
 
                                                         <div class="col-12 mt-3">
                                                             <div class="form-group d-flex justify-content-center d-lg-block">
-                                                                <button class="text-center btn web-btn rounded-pill">Add Review</button>
+                                                                <button class="text-center btn web-btn rounded-pill float-right">اضف تقييم</button>
                                                             </div>
                                                         </div>
-
+                                                        <input type="hidden" name="productID" value="{{ $product->id }}">
                                                     </div>
                                                 </form>
                                             </div>
@@ -264,125 +237,7 @@
             </div>
         </div>
     </div>
-    <!--START LATEST ARRIVALS-->
-    <section class="best-products">
-        <div class="container">
-            <div class="row">
-                <div class="col-12 text-center">
-                    <div class="heading-details">
-                        <h4 class="heading">Best Selling Items</h4>
-                    </div>
-                </div>
-            </div>
-            <div class="best-products-carousel owl-carousel owl-themesss">
-                <div class="item text-center">
-                    <div class="product">
-                        <div class="product-img">
-                            <img src="img/item1.jpg">
-                            <div class="overlay-img">
-                                <div class="overlay-content">
-                                    <a href="#"><i class="las la-heart"></i></a>
-                                    <a href="#"><i class="las la-shopping-bag"></i></a>
-                                    <a href="product-detail.html"><i class="las la-search"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="product-detail">
-                            <span class="product-cat">Category</span>
-                            <h4 class="product-name">Product Name</h4>
-                            <span class="fly-line"></span>
-                            <ul class="reviews">
-                                <li><i class="las la-star"></i></li>
-                                <li><i class="las la-star"></i></li>
-                                <li><i class="las la-star"></i></li>
-                                <li><i class="las la-star"></i></li>
-                                <li><i class="las la-star"></i></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="item text-center">
-                    <div class="product">
-                        <div class="product-img">
-                            <img src="img/item2.jpg">
-                            <div class="overlay-img">
-                                <div class="overlay-content">
-                                    <a href="#"><i class="las la-heart"></i></a>
-                                    <a href="#"><i class="las la-shopping-bag"></i></a>
-                                    <a href="product-detail.html"><i class="las la-search"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="product-detail">
-                            <span class="product-cat">Category</span>
-                            <h4 class="product-name">Product Name</h4>
-                            <span class="fly-line"></span>
-                            <ul class="reviews">
-                                <li><i class="las la-star"></i></li>
-                                <li><i class="las la-star"></i></li>
-                                <li><i class="las la-star"></i></li>
-                                <li><i class="las la-star"></i></li>
-                                <li><i class="las la-star"></i></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="item text-center">
-                    <div class="product">
-                        <div class="product-img">
-                            <img src="img/item3.jpg">
-                            <div class="overlay-img">
-                                <div class="overlay-content">
-                                    <a href="#"><i class="las la-heart"></i></a>
-                                    <a href="#"><i class="las la-shopping-bag"></i></a>
-                                    <a href="product-detail.html"><i class="las la-search"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="product-detail">
-                            <span class="product-cat">Category</span>
-                            <h4 class="product-name">Product Name</h4>
-                            <span class="fly-line"></span>
-                            <ul class="reviews">
-                                <li><i class="las la-star"></i></li>
-                                <li><i class="las la-star"></i></li>
-                                <li><i class="las la-star"></i></li>
-                                <li><i class="las la-star"></i></li>
-                                <li><i class="las la-star"></i></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="item text-center">
-                    <div class="product">
-                        <div class="product-img">
-                            <img src="img/item4.jpg">
-                            <div class="overlay-img">
-                                <div class="overlay-content">
-                                    <a href="#"><i class="las la-heart"></i></a>
-                                    <a href="#"><i class="las la-shopping-bag"></i></a>
-                                    <a href="product-detail.html"><i class="las la-search"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="product-detail">
-                            <span class="product-cat">Category</span>
-                            <h4 class="product-name">Product Name</h4>
-                            <span class="fly-line"></span>
-                            <ul class="reviews">
-                                <li><i class="las la-star"></i></li>
-                                <li><i class="las la-star"></i></li>
-                                <li><i class="las la-star"></i></li>
-                                <li><i class="las la-star"></i></li>
-                                <li><i class="las la-star"></i></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!--END LATEST ARRIVALS-->
+    
 </div>
 <!-- END HEADING SECTION -->
 

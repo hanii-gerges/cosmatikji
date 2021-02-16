@@ -66,10 +66,13 @@ class CategoryController extends Controller
     public function showCategory(Category $category)
     {
         $cart = Cart::where('id',session()->get('cart'))->first();
-        if(!session()->has('cart'))
+        if(!request()->session()->has('cart') || !$cart)
         {
             $cart = Cart::create();
+            config(['lifetime' => 43200,'expire_on_close' => true]);
+            session(['cart' => $cart->id,'item' => []]);
         }
+
         $products = SubCategory::where('category_id',$category->id)->first()->products()->paginate(9);
         $categories = Category::all();
         
@@ -82,9 +85,11 @@ class CategoryController extends Controller
     public function showSubCategory(Category $category,SubCategory $subcategory)
     {
         $cart = Cart::where('id',session()->get('cart'))->first();
-        if(!session()->has('cart'))
+        if(!request()->session()->has('cart') || !$cart)
         {
             $cart = Cart::create();
+            config(['lifetime' => 43200,'expire_on_close' => true]);
+            session(['cart' => $cart->id,'item' => []]);
         }
         $products = $subcategory->products()->paginate(9);
         $categories = Category::all();

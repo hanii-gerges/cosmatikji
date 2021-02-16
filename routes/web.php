@@ -9,6 +9,7 @@ use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\SubCategoryController;
 use App\Models\User;
 use App\Models\Product;
@@ -120,4 +121,7 @@ Route::delete('cartitems/removeFromCart',[CartItemController::class,'removeFromC
 //Order Routes
 Route::get('orders/create',[OrderController::class,'create']);
 Route::post('orders',[OrderController::class,'store']);
+
+//Review Routes
+Route::post('reviews',[ReviewController::class,'store']);
 

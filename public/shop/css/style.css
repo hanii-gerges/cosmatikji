@@ -3088,6 +3088,7 @@ textarea:focus{
 .totals {
     padding: 40px 15px;
     border: 1px solid #d1d1d1;
+    border-radius: 10px;
 }
 
 .totals .table-responsive tr>td {

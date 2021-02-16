@@ -19,4 +19,9 @@ class Product extends Model
     {
         return $this->belongsTo(SubCategory::class);
     }
+
+    function reviews()
+    {
+        return $this->hasMAny(Review::class);
+    }
 }

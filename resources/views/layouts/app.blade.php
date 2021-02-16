@@ -58,11 +58,11 @@
                 <div class="col-12 col-lg-6 mt-auto mb-auto d-lg-flex justify-content-center justify-content-lg-end">
                     <ul class="shop-details d-flex">
                        
-                        <li><a href="#" id="open-shop-card"><i class="las la-shopping-cart"></i></a></li>
+                        <li><a href="/carts/{{ session('cart') }}"><i class="las la-shopping-cart"></i></a></li>
                     </ul>
                 </div>
                 <div class="col-12 d-flex justify-content-center align-items-center">
-                    <a class="navbar-brand" href="../index-food-shop.html"><img src="{{ asset('shop/img/logo.png') }}"></a>
+                    <a class="navbar-brand" href="/"><img src="{{ asset('shop/img/logo.png') }}"></a>
                 </div>
             </div>
         </div>
@@ -72,9 +72,9 @@
         <div class="container">
             <div class="row no-gutters w-100">
                 <div class="col-6 col-lg-3 offset-3 offset-lg-0">
-                    <a href="../index-food-shop.html" title="Logo" class="logo fixed-nav-items">
+                    <a href="/" title="Logo" class="logo fixed-nav-items">
                         <!--Logo Default-->
-                        <img src="{{ asset('shop/img/logo-black.png') }}" alt="logo" class="logo-dark">
+                        <img src="{{ asset('shop/img/logo.png') }}" alt="logo" class="logo-dark">
                     </a>
                 </div>
                 <!--Nav Links-->
@@ -101,7 +101,7 @@
                 <div class="col-3 d-flex justify-content-end align-items-center">
 
                     <ul class="shop-details fixed-nav-items">
-                        <li><a href="#" id="open-shop-card1"><i class="las la-shopping-bag"></i></a></li>
+                        <li><a href="/carts/{{ $cart->id }}"><i class="las la-shopping-cart"></i></a></li>
                     </ul>
                 </div>
             </div>
@@ -211,23 +211,31 @@
         <h4 class="shop-card-heading">سلتي</h4>
         <div class="d-flex justify-content-center align-items-center">
             <div class="mini-bag">
+                @php  
+                    $total = 0;
+                @endphp
                 @foreach ($cart->items as $item)
-                    
                 <div class="bag-item">
                     <div class="item-img">
                         <img src="img/item1.jpg">
                     </div>
-                    <div class="item-details">
-                        <h4 class="item-name">اسم المنتج: {{ $item->product->name }}</h4>
-                        <span class="item-qty">الكمية: {{ $item->count }}</span>
-                        <span class="item-price">السعر: {{ $item->product->price }}</span>
-                    </div>
+                    <a href="/products/{{ $item->product->id }}">
+                        <div class="item-details">
+                            <h4 class="item-name">اسم المنتج: {{ $item->product->name }}</h4>
+                            <span class="item-qty">الكمية: {{ $item->count }}</span>
+                            <span class="item-price" style="color: black;">السعر: {{ $item->product->price * $item->count }}</span>
+                        </div>
+                    </a>
                 </div>
+                @php
+                    $total += $item->product->price * $item->count;
+                @endphp
                 @endforeach
                 
             </div>
         </div>
         <div class="bag-btn">
+            <h4 class="total"><span>المجموع: </span>{{ $total }}</h4>
             <a href="/carts/{{ $cart->id }}" class="btn web-dark-btn rounded-pill">عرض السلة</a>
         </div>
     </div>
@@ -282,13 +290,15 @@
 <script>
     $(document).ready(function() {
         recalculateCart();
-        updateQuantity('.pass-quantity input');
+        $('.pass-quantity input').each(function() {
+            updateQuantity(this);
+        });
 
         /* Set rates */
         var taxRate = 0.00;
         var fadeTime = 300;
     
-        $('.rounded-pill').click(function() {
+        $('#addToCart').click(function() {
             addToCart(this);
         });
         
@@ -323,13 +333,12 @@
             $.ajax({
                 type: "PUT",
                 url: url,
-                data: { cartId: "{{ session()->get('cart') }}",
+                data: { cartId: "{{ request()->session()->get('cart') }}",
                         total: total,
                         "_token": "{{ csrf_token() }}",
                         },
                 success: function (data) {
                     console.log(data);
-            
                 },
                 error: function (data) {
                     console.log('Error:', data);
@@ -403,7 +412,7 @@
                     },
             success: function (data) {
                 console.log(data);
-        
+
             },
             error: function (data) {
                 console.log('Error:', data);
