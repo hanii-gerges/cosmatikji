@@ -18,16 +18,20 @@ class CategoryController extends Controller
     {
         $validationData = $request->validate([
             'name' => 'required',
+        ],
+        [
+            'name.required' => 'يرجى كتابة اسم القسم الرئيسي',
             ]);
         Category::insert([
             'name' => $request->name
             ]);
             $notification = array(
-                'message' => 'تم اضافة الصنف بنجاح',
+                'message' => 'تم اضافة القسم بنجاح',
                 'alert-type' => 'success'
             );
             return redirect()->back()->with($notification);
     }
+
 
     function ViewAllCat()
     {
@@ -41,26 +45,73 @@ class CategoryController extends Controller
         return view('employee.categories.edit',compact('category'));
     }
 
+
     function UpdateCat(Request $request , $id)
     {
+        $validationData = $request->validate([
+            'name' => 'required',
+            ],
+            [
+                'name.required' => 'يرجى كتابة اسم القسم الرئيسي',
+                ]);
+
         Category::where('id',$id)->update([
             'name' => $request->name
         ]);
         $notification = array(
-            'message' => 'تم تعديل الصنف بنجاح',
+            'message' => 'تم تعديل القسم بنجاح',
             'alert-type' => 'warning'
         );
         return redirect()->back()->with($notification);
     }
 
+
     function DeleteCat($id)
     {
         $notification = array(
-            'message' => 'تم حذف الصنف بنجاح',
+            'message' => 'تم حذف القسم بنجاح',
             'alert-type' => 'error'
         );
         Category::where('id' , $id)->delete();
         return redirect()->back()->with($notification);
+    }
+
+
+    //////////////////////////////////////////////////////////////////////////////////////////////////
+    // Admin Functions
+    function AdminAddCat()
+    {
+        return view('admin.categories.create');
+    }
+
+    function AdminStoreCat(Request $request)
+    {
+        $validationData = $request->validate([
+            'name' => 'required',
+        ],
+        [
+            'name.required' => 'يرجى كتابة اسم القسم الرئيسي',
+            ]);
+        Category::insert([
+            'name' => $request->name
+            ]);
+            $notification = array(
+                'message' => 'تم اضافة القسم بنجاح',
+                'alert-type' => 'success'
+            );
+            return redirect()->back()->with($notification);
+    }
+
+    function AdminViewAllCat()
+    {
+        $categories = Category::paginate(5);
+        return view('admin.categories.view', compact('categories'));
+    }
+
+    function AdminEditCat($id)
+    {
+        $category = Category::find($id);
+        return view('admin.categories.edit',compact('category'));
     }
 
     public function showCategory(Category $category)
@@ -82,6 +133,34 @@ class CategoryController extends Controller
                                       ->with('cart',$cart);
     }
 
+    function AdminUpdateCat(Request $request , $id)
+    {
+        $validationData = $request->validate([
+            'name' => 'required',
+            ],
+            [
+                'name.required' => 'يرجى كتابة اسم القسم الرئيسي',
+                ]);
+
+        Category::where('id',$id)->update([
+            'name' => $request->name
+        ]);
+        $notification = array(
+            'message' => 'تم تعديل القسم بنجاح',
+            'alert-type' => 'warning'
+        );
+        return redirect()->back()->with($notification);
+    }
+
+    function AdminDeleteCat($id)
+    {
+        $notification = array(
+            'message' => 'تم حذف القسم بنجاح',
+            'alert-type' => 'error'
+        );
+        Category::where('id' , $id)->delete();
+        return redirect()->back()->with($notification);
+    }
     public function showSubCategory(Category $category,SubCategory $subcategory)
     {
         $cart = Cart::where('id',session()->get('cart'))->first();
@@ -103,3 +182,27 @@ class CategoryController extends Controller
 
 
 }
+
+// =======
+// use App\Models\Category;
+// use App\Models\SubCategory;
+// use Illuminate\Http\Request;
+
+// class CategoryController extends Controller
+// {
+//     public function showCategory(Category $category)
+//     {
+//         $products = SubCategory::where('category_id',$category->id)->first()->products;
+
+//         return view('categories.show');
+//     }
+
+//     public function showSubCategory(Category $category,$subcategory_id)
+//     {
+
+//         $products = SubCategory::findOrFail($subcategory_id)->products;
+//         return view('categories.show');
+//     }
+
+// >>>>>>> a3dbc06813b9cb27d3bf1c65fb3fef29f01a4f85
+// }

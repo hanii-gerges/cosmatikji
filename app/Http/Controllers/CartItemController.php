@@ -24,7 +24,6 @@ class CartItemController extends Controller
         ];
         config(['lifetime' => 43200,'expire_on_close' => true]);
         session(['cart' => $cart->id, 'item' => $item]);
-        request()->session()->flash('message', 'تمت الاضافة');
         
         $cartitem = CartItem::where('cart_id',$cart->id)->where('product_id',$product->id)->first();
         if(!$cartitem)
@@ -33,15 +32,16 @@ class CartItemController extends Controller
                 'product_id' => $product->id,
                 'cart_id' => request()->session()->get('cart'),
                 'count' => request('productCount'),
-            ]);
-        }
-        else
-        {
+                ]);
+            }
+            else
+            {
             $cartitem->update([
                 'count' => request('productCount'),
-            ]);
+                ]);
         }
         
+        session(['message' , 'تمت الاضافة']);
         $data = [];
         $data['cart'] = request()->session()->has('cart') ? request()->session()->get('cart') : [];
         $data['item'] = request()->session()->has('item') ? request()->session()->get('item') : [];

@@ -3308,7 +3308,7 @@ form.findus .form-control, form.findus textarea {
     color: #2d2d2d;
     font-weight: 300;
     text-decoration: none;
-    margin-left: 30px;
+    margin-right: 400px;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -3319,7 +3319,7 @@ form.findus .form-control, form.findus textarea {
     color: #2d2d2d;
     position: absolute;
     top: 2px;
-    left: 0;
+    right: 0;
 }
 /*contact us form*/
 .contact-sec .contact-box{

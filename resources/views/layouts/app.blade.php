@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -29,6 +28,9 @@
     <link href="{{asset('shop/css/style.css')}}" rel="stylesheet">
     <link href="{{asset('shop/css/cart.css')}}" rel="stylesheet">
 
+    {{-- toastr css link --}}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">
+
 </head>
 
 <body data-spy="scroll" data-target=".navbar" data-offset="90">
@@ -53,7 +55,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-12 col-lg-6 mt-auto mb-auto">
-                   
+
                 </div>
                 <div class="col-12 col-lg-6 mt-auto mb-auto d-lg-flex justify-content-center justify-content-lg-end">
                     <ul class="shop-details d-flex">
@@ -155,7 +157,7 @@
             <div class="crumbs">
                 <nav aria-label="breadcrumb" class="breadcrumb-items">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="../index-food-shop.html">الرئيسية</a></li>
+                        <li class="breadcrumb-item"><a href="{{route('front.home')}}">الرئيسية</a></li>
                         <li class="breadcrumb-item"><a href="product-listing.html">Product Listing</a></li>
                     </ol>
                 </nav>
@@ -204,43 +206,6 @@
 </footer>
 <!--Footer End-->
 
-<!--Shop card window Start-->
-<section class="shop-card-window hidden" id="shop-card-window">
-    <a href="#" id="close-card-window" class="close-card-window"><i class="las la-times"></i></a>
-    <div class="shop-card-window-content">
-        <h4 class="shop-card-heading">سلتي</h4>
-        <div class="d-flex justify-content-center align-items-center">
-            <div class="mini-bag">
-                @php  
-                    $total = 0;
-                @endphp
-                @foreach ($cart->items as $item)
-                <div class="bag-item">
-                    <div class="item-img">
-                        <img src="img/item1.jpg">
-                    </div>
-                    <a href="/products/{{ $item->product->id }}">
-                        <div class="item-details">
-                            <h4 class="item-name">اسم المنتج: {{ $item->product->name }}</h4>
-                            <span class="item-qty">الكمية: {{ $item->count }}</span>
-                            <span class="item-price" style="color: black;">السعر: {{ $item->product->price * $item->count }}</span>
-                        </div>
-                    </a>
-                </div>
-                @php
-                    $total += $item->product->price * $item->count;
-                @endphp
-                @endforeach
-                
-            </div>
-        </div>
-        <div class="bag-btn">
-            <h4 class="total"><span>المجموع: </span>{{ $total }}</h4>
-            <a href="/carts/{{ $cart->id }}" class="btn web-dark-btn rounded-pill">عرض السلة</a>
-        </div>
-    </div>
-</section>
-<!--Shop card window  End-->
 <!--Search modal window start-->
 <div class="search_block">
     <div class="search_box animated wow fadeInUp d-flex justify-content-center align-items-center">
@@ -301,7 +266,7 @@
         $('#addToCart').click(function() {
             addToCart(this);
         });
-        
+
         $('.remove-item button').click(function() {
             removeItem(this);
         });
@@ -350,19 +315,19 @@
         /* Recalculate cart */
         function recalculateCart() {
             var subtotal = 0;
-    
+
             /* Sum up row totals */
             $('.item').each(function() {
             subtotal += parseFloat($(this).children('.product-line-price').text());
             });
-    
+
             /* Calculate totals */
             var shipping = Number($('#shipping').children('option:selected').val());
             //console.log('shipping '+ shipping);
             //console.log('subtotal ' + subtotal);
             var total = Number(subtotal + shipping);
             //console.log('total ' + total);
-    
+
             /* Update totals display */
             $('.totals-value').fadeOut(fadeTime, function() {
             $('#cart-subtotal').html(subtotal.toFixed(2));
@@ -383,7 +348,7 @@
             var price = parseFloat(productRow.children('.product-price').text());
             var quantity = $(quantityInput).val();
             var linePrice = price * quantity;
-    
+
             /* Update line price display and recalc cart totals */
             productRow.children('.product-line-price').each(function() {
                 $(this).fadeOut(fadeTime, function() {
@@ -392,9 +357,9 @@
                     $(this).fadeIn(fadeTime);
                 });
             });
-    
+
         }
-    
+
         function addToCart(addButton) {
             var productId = $(addButton).parent().parent().children().children('input').attr('id');
             var productCount = $(addButton).parent().parent().children().children('input').val();
@@ -412,16 +377,20 @@
                     },
             success: function (data) {
                 console.log(data);
+                @if(Session::has('message') && URL::current('/products/{{ $product->id }}'))
+                        toastr.success("{{Session::get('message')}}");
+                        {{ session()->forget('message') }}
+                @endif
 
             },
             error: function (data) {
                 console.log('Error:', data);
             }
             });
-    
+
         //}
         //else return false;
-        
+
         }
 
         /* Remove item from cart */
@@ -440,13 +409,13 @@
                         },
                 success: function (data) {
                     console.log(data);
-            
+
                 },
                 error: function (data) {
                     console.log('Error:', data);
                 }
                 });
-        
+
 
             /* Remove row from DOM and recalc cart total */
             var productRow = $(removeButton).parent().parent();
@@ -455,12 +424,38 @@
             recalculateCart();
             });
         }
-        
-  
+
+
     });
 </script>
 
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+<script>
+@if(Session::has('message'))
 
+var type = "{{Session::get('alert-type','info')}}"
+
+switch(type)
+{
+    case 'info' :
+    toastr.info("{{Session::get('message')}}");
+    break;
+
+    case 'success' :
+    toastr.success("{{Session::get('message')}}");
+    break;
+
+    case 'warning' :
+    toastr.warning("{{Session::get('message')}}");
+    break;
+
+    case 'error' :
+    toastr.error("{{Session::get('message')}}");
+    break;
+}
+@endif
+
+</script>
 
 </body>
 </html>

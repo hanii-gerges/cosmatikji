@@ -15,10 +15,6 @@ use App\Models\Product;
 
 class AdminController extends Controller
 {
-    function CreateEmployee()
-    {
-        return view('admin.emp.create');
-    }
 
     function HomePage()
     {
@@ -26,6 +22,10 @@ class AdminController extends Controller
         return redirect()->route('admin.dashboard');
     }
 
+    function CreateEmployee()
+    {
+        return view('admin.emp.create');
+    }
 
 
     function logout(Request $request)

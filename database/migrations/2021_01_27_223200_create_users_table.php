@@ -21,8 +21,8 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->rememberToken();
             $table->foreignId('current_team_id')->nullable();
-            $table->string('utype')->default('user')->comment('user types user & employee &     ');
-            $table->text('profile_photo_path')->nullable();
+            $table->string('utype')->default('user')->comment('user types user USR & employee EMP & Admin & ADM');
+            $table->text('profile_photo_path')->nullable()->default('back-end/img/Admin.jpg');
             $table->timestamps();
         });
     }
