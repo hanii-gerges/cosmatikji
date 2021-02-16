@@ -47,24 +47,27 @@
             <p class="text-uppercase mb-0 py-3"><strong>ملخص الطلب</strong></p>
           </div>
           <div class="totals-item d-flex align-items-center justify-content-between mt-3 border-bottom">
-            <p class="text-uppercase"><strong>السعر قبل الشحن</strong></p>
             <p class="totals-value font-weight-bold" id="cart-subtotal">95</p>
+            <p class="text-uppercase"><strong>السعر قبل الشحن</strong></p>
           </div>
-          <select class="form-select totals-item d-flex align-items-center justify-content-between mt-3 border-bottom" id='shipping' aria-label="Default select example">
-            <option value="0" selected>الشحن الى:</option>
-            <option value="3">عمان</option>
-            <option value="5">الزرقاء</option>
-          </select>
+          <div class="d-flex align-items-center justify-content-between mt-3">
+            <select id='shipping' aria-label="Default select example">
+              <option value="0" selected></option>
+              <option value="3">عمان</option>
+              <option value="5">الزرقاء</option>
+            </select>
+            <label class="font-weight-bold" for="shipping">الشحن الى</label>
+          </div>
           {{-- <div class="totals-item d-flex align-items-center justify-content-between">
             <p class="text-uppercase">Estimated Tax</p>
             <p class="totals-value" id="cart-tax">3.60</p>
           </div> --}}
           <div class="totals-item totals-item-total d-flex align-items-center justify-content-between mt-3 pt-3 border-gainsboro">
+            <p class="totals-value font-weight-bold cart-total">00.00</p>
             <p class="text-uppercase"><strong>اجمالي السعر</strong></p>
-            <p class="totals-value font-weight-bold cart-total">98.60</p>
           </div>
         </div>
-        <a href="/orders/create" class="mt-3 btn btn-pay w-100 d-flex justify-content-between btn-lg rounded-0">اطلب الان <span class="totals-value cart-total">98.60</span></a>
+        <a href="/orders/create" class="mt-3 btn btn-pay w-100 d-flex justify-content-between btn-lg rounded-0"><span class="totals-value cart-total">00.00</span>اطلب الان</a>
       </div>
   
     </div>

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cart;
+use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
@@ -268,8 +270,21 @@ class ProductController extends Controller
 
     public function show(Product $product)
     {
+<<<<<<< HEAD
         return view('products.show')->with('product',$product);
 
+=======
+        $cart = Cart::where('id',session()->get('cart'))->first();
+        if(!session()->has('cart'))
+        {
+            $cart = Cart::create();
+        }
+        $categories = Category::all();
+        return view('products.show')->with('product',$product)
+                                    ->with('categories',$categories)
+                                    ->with('cart',$cart);
+                                    
+>>>>>>> e4ba1b14ca594aa015c1767c78d2ace21d49a2c7
     }
 
 }

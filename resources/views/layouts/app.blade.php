@@ -60,15 +60,12 @@
                 </div>
                 <div class="col-12 col-lg-6 mt-auto mb-auto d-lg-flex justify-content-center justify-content-lg-end">
                     <ul class="shop-details d-flex">
-                        <li>
-<!--                            <a href="#" id="open-search-window"><i class="las la-search"></i></a>-->
-                            <a href="javascript:void(0)" class="open_search"><i class="las la-search"></i></a>
-                        </li>
-                        <li><a href="#" id="open-shop-card"><i class="las la-shopping-bag"></i></a></li>
+                       
+                        <li><a href="#" id="open-shop-card"><i class="las la-shopping-cart"></i></a></li>
                     </ul>
                 </div>
                 <div class="col-12 d-flex justify-content-center align-items-center">
-                    <a class="navbar-brand" href="../index-food-shop.html"><img src="shop/img/logo.png"></a>
+                    <a class="navbar-brand" href="../index-food-shop.html"><img src="{{ asset('shop/img/logo.png') }}"></a>
                 </div>
             </div>
         </div>
@@ -80,66 +77,30 @@
                 <div class="col-6 col-lg-3 offset-3 offset-lg-0">
                     <a href="../index-food-shop.html" title="Logo" class="logo fixed-nav-items">
                         <!--Logo Default-->
-                        <img src="shop/img/logo-black.png" alt="logo" class="logo-dark">
+                        <img src="{{ asset('shop/img/logo-black.png') }}" alt="logo" class="logo-dark">
                     </a>
                 </div>
                 <!--Nav Links-->
                 <div class="col-6 d-none d-lg-flex justify-content-lg-center align-items-lg-center">
                     <div class="collapse navbar-collapse" id="megaone">
                         <ul class="navbar-nav ml-auto mr-auto">
+                            @foreach($categories as $category)
                             <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Pages <i class="fas fa-angle-down"></i>
+                                <a href="/categories/{{ $category->id }}">
+                                <div class="dropbtn">{{ $category->name }}</div>
                                 </a>
-                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="product-listing.html"><i class="las la-angle-double-right"></i> Product Listing</a>
-                                    <a class="dropdown-item" href="product-detail.html"><i class="las la-angle-double-right"></i> Product Detail</a>
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="standalone.html"><i class="las la-angle-double-right"></i> Standalone</a>
+                                <div class="dropdown-content text-right">
+                                    @foreach($category->subcategories as $subcategory)
+                                        <a href="/categories/{{ $category->id }}/subcategories/{{ $subcategory->id }}">{{ $subcategory->name }}</a>
+                                    @endforeach
                                 </div>
                             </li>
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Pages <i class="fas fa-angle-down"></i>
-                                </a>
-                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="product-listing.html"><i class="las la-angle-double-right"></i> Product Listing</a>
-                                    <a class="dropdown-item" href="product-detail.html"><i class="las la-angle-double-right"></i> Product Detail</a>
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="standalone.html"><i class="las la-angle-double-right"></i> Standalone</a>
-                                </div>
-                            </li><li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Pages <i class="fas fa-angle-down"></i>
-                                </a>
-                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="product-listing.html"><i class="las la-angle-double-right"></i> Product Listing</a>
-                                    <a class="dropdown-item" href="product-detail.html"><i class="las la-angle-double-right"></i> Product Detail</a>
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="standalone.html"><i class="las la-angle-double-right"></i> Standalone</a>
-                                </div>
-                            </li><li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Pages <i class="fas fa-angle-down"></i>
-                                </a>
-                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="product-listing.html"><i class="las la-angle-double-right"></i> Product Listing</a>
-                                    <a class="dropdown-item" href="product-detail.html"><i class="las la-angle-double-right"></i> Product Detail</a>
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="standalone.html"><i class="las la-angle-double-right"></i> Standalone</a>
-                                </div>
-                            </li><li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Pages <i class="fas fa-angle-down"></i>
-                                </a>
-                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="product-listing.html"><i class="las la-angle-double-right"></i> Product Listing</a>
-                                    <a class="dropdown-item" href="product-detail.html"><i class="las la-angle-double-right"></i> Product Detail</a>
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="standalone.html"><i class="las la-angle-double-right"></i> Standalone</a>
-                                </div>
-                            </li>
+<<<<<<< HEAD
                             <li><a class="nav-link active" href="{{route('front.home')}}">الرئيسية</a></li>
+=======
+                            @endforeach
+                            <a class="nav-link active" href="/">الرئيسية</a></li>
+>>>>>>> e4ba1b14ca594aa015c1767c78d2ace21d49a2c7
                         </ul>
                     </div>
                 </div>
@@ -147,9 +108,6 @@
                 <div class="col-3 d-flex justify-content-end align-items-center">
 
                     <ul class="shop-details fixed-nav-items">
-                        <li>
-                            <a href="javascript:void(0)" class="open_search"><i class="las la-search"></i></a>
-                        </li>
                         <li><a href="#" id="open-shop-card1"><i class="las la-shopping-bag"></i></a></li>
                     </ul>
                 </div>
@@ -163,6 +121,7 @@
             <nav class="side-nav w-100">
                 <ul class="navbar-nav">
                     <li class="nav-item">
+<<<<<<< HEAD
                         <a class="nav-link" href="{{route('front.home')}}">رئيسية</a>
                     </li>
 
@@ -175,7 +134,15 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{route('contact')}}">اتصل بنا</a>
+=======
+                        <a class="nav-link" href="/">الرئيسية</a>
+>>>>>>> e4ba1b14ca594aa015c1767c78d2ace21d49a2c7
                     </li>
+                    @foreach ($categories as $category)
+                        <li class="nav-item">
+                            <a class="nav-link" href="/categories/{{ $category->id }}">{{ $category->name }}</a>
+                        </li>
+                    @endforeach
                 </ul>
             </nav>
 
@@ -191,9 +158,9 @@
     </div>
     <a id="close_side_menu" href="javascript:void(0);"></a>
     <!-- End side menu -->
-    <svg id="header-svg" xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="60" viewBox="0 0 100 100" preserveAspectRatio="none">
+    {{--  <svg id="header-svg" xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="60" viewBox="0 0 100 100" preserveAspectRatio="none">
         <path d="M0 100 C40 0 60 0 100 100 Z"/>
-    </svg>
+    </svg>  --}}
     <a href="javascript:void(0)" class="sidemenu_btn" id="sidemenu_toggle">
         <span></span>
         <span></span>
@@ -203,9 +170,9 @@
 <!--Header End-->
 
 <!--Slider Start-->
-<section id="slider-sec" class="slider-sec parallax" style="background: url('{{ asset('shop/img/product-listing-banner.jpg')}}');">
+<section id="slider-sec" class="slider-sec parallax" style="background: url('{{ asset('shop/img/banner-new.jpg')}}');">
     <div class="overlay text-center d-flex justify-content-center align-items-center">
-        <div class="slide-contain">
+        {{--  <div class="slide-contain">
             <h4>Product Listing</h4>
             <div class="crumbs">
                 <nav aria-label="breadcrumb" class="breadcrumb-items">
@@ -215,14 +182,12 @@
                     </ol>
                 </nav>
             </div>
-        </div>
+        </div>  --}}
     </div>
 </section>
 <!--slider sec end-->
 
-
-@yield('content')
-
+    @yield('content')
 
 
 
@@ -265,59 +230,27 @@
 <section class="shop-card-window hidden" id="shop-card-window">
     <a href="#" id="close-card-window" class="close-card-window"><i class="las la-times"></i></a>
     <div class="shop-card-window-content">
-        <h4 class="shop-card-heading">My Bag</h4>
+        <h4 class="shop-card-heading">سلتي</h4>
         <div class="d-flex justify-content-center align-items-center">
             <div class="mini-bag">
+                @foreach ($cart->items as $item)
+                    
                 <div class="bag-item">
                     <div class="item-img">
                         <img src="img/item1.jpg">
                     </div>
                     <div class="item-details">
-                        <h4 class="item-name">Product Name</h4>
-                        <span class="item-qty">Qty: 2</span>
-                        <span class="item-price">Price: $300</span>
-                        <a href="#" class="basket"><i class="las la-trash"></i> </a>
+                        <h4 class="item-name">اسم المنتج: {{ $item->product->name }}</h4>
+                        <span class="item-qty">الكمية: {{ $item->count }}</span>
+                        <span class="item-price">السعر: {{ $item->product->price }}</span>
                     </div>
                 </div>
-                <div class="bag-item">
-                    <div class="item-img">
-                        <img src="img/item2.jpg">
-                    </div>
-                    <div class="item-details">
-                        <h4 class="item-name">Product Name</h4>
-                        <span class="item-qty">Qty: 2</span>
-                        <span class="item-price">Price: $300</span>
-                        <a href="#" class="basket"><i class="las la-trash"></i> </a>
-                    </div>
-                </div>
-                <div class="bag-item">
-                    <div class="item-img">
-                        <img src="img/item3.jpg">
-                    </div>
-                    <div class="item-details">
-                        <h4 class="item-name">Product Name</h4>
-                        <span class="item-qty">Qty: 2</span>
-                        <span class="item-price">Price: $300</span>
-                        <a href="#" class="basket"><i class="las la-trash"></i> </a>
-                    </div>
-                </div>
-                <div class="bag-item">
-                    <div class="item-img">
-                        <img src="img/item4.jpg">
-                    </div>
-                    <div class="item-details">
-                        <h4 class="item-name">Product Name</h4>
-                        <span class="item-qty">Qty: 2</span>
-                        <span class="item-price">Price: $300</span>
-                        <a href="#" class="basket"><i class="las la-trash"></i> </a>
-                    </div>
-                </div>
+                @endforeach
+                
             </div>
         </div>
         <div class="bag-btn">
-            <h4 class="total"><span>Total: </span>100$</h4>
-            <a href="#" class="btn web-dark-btn rounded-pill">View Bag </a>
-            <a href="#" class="btn web-btn rounded-pill">Checkout </a>
+            <a href="/carts/{{ $cart->id }}" class="btn web-dark-btn rounded-pill">عرض السلة</a>
         </div>
     </div>
 </section>
@@ -395,6 +328,37 @@
             recalculateCart();
         });
 
+        $('.btn-pay').click(function() {
+            var shipping = $('#shipping').children('option:selected').val();
+            if(shipping == '0')
+            {
+                alert('الرجاء اختيار منطقة الشحن');
+                return false;
+            }
+            addTotalToCart(this);
+
+        });
+
+        function addTotalToCart(total) {
+            var total = $(total).children().text();
+            var url = '/carts/addTotalToCart'
+            $.ajax({
+                type: "PUT",
+                url: url,
+                data: { cartId: "{{ session()->get('cart') }}",
+                        total: total,
+                        "_token": "{{ csrf_token() }}",
+                        },
+                success: function (data) {
+                    console.log(data);
+            
+                },
+                error: function (data) {
+                    console.log('Error:', data);
+                }
+                });
+        
+        }
 
         /* Recalculate cart */
         function recalculateCart() {

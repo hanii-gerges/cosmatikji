@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 
+<<<<<<< HEAD
 
 
+=======
+use App\Models\Cart;
+>>>>>>> e4ba1b14ca594aa015c1767c78d2ace21d49a2c7
 use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\SubCategory;
@@ -117,12 +121,26 @@ class CategoryController extends Controller
 
     public function showCategory(Category $category)
     {
+<<<<<<< HEAD
         $products = SubCategory::where('category_id',$category->id)->first()->products;
 
+=======
+        $cart = Cart::where('id',session()->get('cart'))->first();
+        if(!session()->has('cart'))
+        {
+            $cart = Cart::create();
+        }
+        $products = SubCategory::where('category_id',$category->id)->first()->products()->paginate(9);
+        $categories = Category::all();
+        
+>>>>>>> e4ba1b14ca594aa015c1767c78d2ace21d49a2c7
         return view('categories.show')->with('category',$category)
-                                      ->with('products',$products);
+                                      ->with('categories',$categories)
+                                      ->with('products',$products)
+                                      ->with('cart',$cart);
     }
 
+<<<<<<< HEAD
     function AdminUpdateCat(Request $request , $id)
     {
         $validationData = $request->validate([
@@ -150,6 +168,23 @@ class CategoryController extends Controller
         );
         Category::where('id' , $id)->delete();
         return redirect()->back()->with($notification);
+=======
+    public function showSubCategory(Category $category,SubCategory $subcategory)
+    {
+        $cart = Cart::where('id',session()->get('cart'))->first();
+        if(!session()->has('cart'))
+        {
+            $cart = Cart::create();
+        }
+        $products = $subcategory->products()->paginate(9);
+        $categories = Category::all();
+
+        return view('categories.show')->with('category',$category)
+                                      ->with('categories',$categories)
+                                      ->with('products',$products)
+                                      ->with('subcategory',$subcategory)
+                                      ->with('cart',$cart);
+>>>>>>> e4ba1b14ca594aa015c1767c78d2ace21d49a2c7
     }
 
 
