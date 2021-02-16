@@ -11,13 +11,13 @@
 
 <!--Start Site Main Options and Data-->
 <div class="panel panel-default view_users" style="margin: 10px;">
-    <div class="panel-heading text-right h4">عرض كل الأصناف الرئيسية</div>
+    <div class="panel-heading text-right h4">عرض كل الأقسام الفرعية</div>
 
     <table class="table">
         <tr class="h4 text-center">
             <td class="">#</td>
-            <td class="">اسم الصنف الرئيسي</td>
-            <td class="">اسم الصنف الفرعي</td>
+            <td class="">اسم القسم الرئيسي</td>
+            <td class="">اسم القسم الفرعي</td>
             <td class="">التحكم</td>
         </tr>
 
@@ -28,7 +28,7 @@
             <td>{{$subcategory->name}}</td>
             <td class="text-center">
                 <a href="{{route('admin.edit.subCat',$subcategory->id)}}" class="glyphicon glyphicon-pencil text-info"></a>
-                <a href="{{route('admin.delete.subCat',$subcategory->id)}}" class="glyphicon glyphicon-trash text-danger" onclick="return confirm('هل انتا متأكد من انك تريد حذف الصنف الفرعي');"></a>
+                <a href="{{route('admin.delete.subCat',$subcategory->id)}}" class="glyphicon glyphicon-trash text-danger" onclick="return confirm('هل انتا متأكد من انك تريد حذف القسم الفرعي');"></a>
             </td>
         </tr>
             @endforeach

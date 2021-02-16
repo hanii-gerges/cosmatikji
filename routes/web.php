@@ -3,16 +3,29 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\AdminController;
+
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\MultiPicContoller;
-use App\Http\Controllers\SubCategoryController;
+
+use App\Http\Controllers\CartController;
+use App\Http\Controllers\CartItemController;
+//use App\Http\Controllers\EmployeeController;
+//use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\MessageController;
+
+
+use App\Http\Controllers\SubCategoryController;
+//use App\Http\Controllers\ProductController;
 use App\Models\User;
 use App\Models\Product;
 use App\Models\Category;
 use App\Models\MultiPic;
 use App\Models\SubCategory;
+use App\Models\Order;
+
 
 
 
@@ -22,6 +35,7 @@ use App\Models\SubCategory;
 // use App\Http\Controllers\CategoryController;
 // use App\Models\Category;
 // >>>>>>> a3dbc06813b9cb27d3bf1c65fb3fef29f01a4f85
+
 
 /*
 |--------------------------------------------------------------------------
@@ -35,8 +49,15 @@ use App\Models\SubCategory;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    $categories = Category::all();
+    return view('welcome',compact('categories'));
 });
+
+// fontend categories
+
+Route::get('/go/{id}',function($id){
+    echo $id;
+})->name('go');
 
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
@@ -48,23 +69,26 @@ Route::middleware(['auth:sanctum', 'verified' , 'authadmin'])->get('/admin/dashb
     $users = count(User::where('utype','user')->get());
     $products = count(Product::all());
     $employees = count(User::where('utype','employee')->get());
-    return view('admin.dashboard' , compact('users','products','employees'));
+    $orders_recived = count(Order::all()->where('status',1));
+    $orders_unrecived = count(Order::all()->where('status',0));
+    return view('admin.dashboard' , compact('users','products','employees','orders_recived','orders_unrecived'));
 
 })->name('admin.dashboard');
-Route::get('home' , [AdminController::class , 'HomePage'])->name('home');
-Route::get('logout' , [AdminController::class , 'logout'])->name('logout');
-Route::get('create/employee/' , [AdminController::class , 'CreateEmployee'])->name('create.emp');
-Route::post('store/employee/' , [AdminController::class , 'StoreEmployee'])->name('store.emp');
-Route::get('view/all/employee/' , [AdminController::class , 'ViewAllEmp'])->name('view.all.emp');
-Route::get('edit/employee/by/admin/{id}' , [AdminController::class , 'EditEmpByAdmin'])->name('admin.edit.emp');
-Route::post('update/employee/by/admin/{id}' , [AdminController::class , 'UpdateEmpByAdmin'])->name('admin.update.emp');
-Route::get('delete/employee/{id}' , [AdminController::class , 'DeleteEmp'])->name('delete.emp');
-Route::get('admin/profile/' , [AdminController::class , 'AdminProfile'])->name('admin.profile');
-Route::post('admin/update/profile/' , [AdminController::class , 'UpdateProfile'])->name('admin.update.profile');
-Route::get('admin/change/password/' , [AdminController::class , 'ChangePassword'])->name('admin.change.password');
-Route::post('admin/update/password/' , [AdminController::class , 'UpdatePassword'])->name('admin.update.password');
-Route::get('admin/add/photo/' , [AdminController::class , 'AddPhoto'])->name('admin.add.photo');
-Route::post('admin/update/photo/' , [AdminController::class , 'StorePhoto'])->name('admin.store.photo');
+
+Route::get('/home' , [AdminController::class , 'HomePage'])->name('home');
+Route::get('/logout' , [AdminController::class , 'logout'])->name('logout');
+Route::get('/create/employee/' , [AdminController::class , 'CreateEmployee'])->name('create.emp');
+Route::post('/store/employee/' , [AdminController::class , 'StoreEmployee'])->name('store.emp');
+Route::get('/view/all/employee/' , [AdminController::class , 'ViewAllEmp'])->name('view.all.emp');
+Route::get('/edit/employee/by/admin/{id}' , [AdminController::class , 'EditEmpByAdmin'])->name('admin.edit.emp');
+Route::post('/update/employee/by/admin/{id}' , [AdminController::class , 'UpdateEmpByAdmin'])->name('admin.update.emp');
+Route::get('/delete/employee/{id}' , [AdminController::class , 'DeleteEmp'])->name('delete.emp');
+Route::get('/admin/profile/' , [AdminController::class , 'AdminProfile'])->name('admin.profile');
+Route::post('/admin/update/profile/' , [AdminController::class , 'UpdateProfile'])->name('admin.update.profile');
+Route::get('/admin/change/password/' , [AdminController::class , 'ChangePassword'])->name('admin.change.password');
+Route::post('/admin/update/password/' , [AdminController::class , 'UpdatePassword'])->name('admin.update.password');
+Route::get('/admin/add/photo/' , [AdminController::class , 'AddPhoto'])->name('admin.add.photo');
+Route::post('/admin/update/photo/' , [AdminController::class , 'StorePhoto'])->name('admin.store.photo');
 
 
 // Employee Routes
@@ -74,6 +98,7 @@ Route::middleware(['auth:sanctum', 'verified' , 'authemployee'])->get('/employee
     $products = count(Product::all());
     return view('employee.dashboard',compact('categories','subcategories','products'));
 })->name('employee.dashboard');
+
 Route::get('employee/home' , [EmployeeController::class , 'HomePage'])->name('emp.home');
 Route::get('employee/profile' , [EmployeeController::class , 'EmployeeProfile'])->name('employee.profile');
 Route::post('employee/update/profile' , [EmployeeController::class , 'EmployeeUpdateProfile'])->name('employee.update.profile');
@@ -153,15 +178,43 @@ Route::post('/employee/update/image/{id}' , [MultiPicContoller::class ,'EmpUpdat
 
 
 // Admin Order Routes
-Route::view('/recived/orders' , 'admin.orders.recived');
-Route::view('/unrecived/orders' , 'admin.orders.unrecived');
-Route::post('/test' , [MultiPicContoller::class , 'Test'])->name('test');
+Route::get('/recived/orders' ,[OrderController::class,'adminRecived'])->name('admin.recived');
+Route::get('/unrecived/orders' ,[OrderController::class,'adminUnRecived'])->name('admin.unrecived');
+Route::post('/change/status' , [OrderController::class , 'updateOrderStatus'])->name('change.status');
+// Route::view('/unrecived/orders' ,'admin.orders.unrecived');
+//Route::post('/test' ,[MultiPicContoller::class,'Test'])->name('test');
+
+// HOME PAGE Route
+Route::get('/home',[Controller::class , 'Home'])->name('front.home');
+
+// Contact Us Routes
+Route::get('/contact',[MessageController::class , 'Contact'])->name('contact');
+Route::post('/send/message' , [MessageController::class , 'Store'])->name('store.msg');
+
+// Messages Route
+Route::get('/view/message',[MessageController::class , 'View'])->name('view.message');
+Route::get('/delete/message/{id}',[MessageController::class , 'Delete'])->name('delete.message');
 
 
 
 
+//Category Routes
+Route::get('categories/{category}',[CategoryController::class,'showCategory']);
+Route::get('categories/{category}/subcategories/{subcategory}',[CategoryController::class,'showSubCategory']);
 
 
+//Product Routes
+Route::get('products/{product}',[ProductController::class,'show']);
 
 
+//Cart Routes
+Route::get('carts/{cart}',[CartController::class,'show']);
+
+//CartItem Routes
+Route::post('cartitems/addToCart',[CartItemController::class,'addToCart']);
+Route::delete('cartitems/removeFromCart',[CartItemController::class,'removeFromCart']);
+
+//Order Routes
+Route::get('orders/create',[OrderController::class,'create']);
+Route::post('orders',[OrderController::class,'store']);
 

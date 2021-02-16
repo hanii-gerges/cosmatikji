@@ -34,7 +34,7 @@
 
                         <h3>طلبات غير مستلمه</h3>
 
-                        <p class="h4">0</p>
+                        <p class="h4">{{$orders_unrecived}}</p>
                     </div>
 
                     <div style="background-color: #2ecc71">
@@ -42,7 +42,7 @@
 
                         <h3>طلبات مستلمه</h3>
 
-                        <p class="h4">0</p>
+                        <p class="h4">{{$orders_recived}}</p>
                     </div>
 
                 </div>

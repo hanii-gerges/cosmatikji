@@ -194,7 +194,12 @@ class MultiPicContoller extends Controller
     function Test(Request $request)
     {
         $states = $request->states;
-        echo $states;
+        $notification = array(
+            'message' => 'تم تعديل المنتج بنجاح',
+            'alert-type' => 'warning'
+        );
+        return redirect()->back()->with($notification);
+
         // Order::where('id',$id)->update([
         //     'states' => $states
         // ]);

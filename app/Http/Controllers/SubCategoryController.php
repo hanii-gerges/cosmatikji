@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\SubCategory;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 
 class SubCategoryController extends Controller
@@ -20,8 +21,8 @@ class SubCategoryController extends Controller
             'subname' => 'required'
         ],
     [
-            'cat_id.required' => 'يرجى ادخال رقم الصنف الرئيسي',
-            'subname.required' => 'يرجى كتابة اسم الصنف الفرعي'
+            'cat_id.required' => 'يرجى ادخال رقم القسم الرئيسي',
+            'subname.required' => 'يرجى كتابة اسم القسم الفرعي'
 
     ]);
 
@@ -30,7 +31,7 @@ class SubCategoryController extends Controller
             'name' => $request->subname,
         ]);
         $notification = array(
-            'message' => 'تم اضافة الصنف الفرعي بنجاح',
+            'message' => 'تم اضافة القسم الفرعي بنجاح',
             'alert-type' => 'success'
         );
 
@@ -58,8 +59,8 @@ class SubCategoryController extends Controller
             'subname' => 'required'
         ],
         [
-                'cat_id.required' => 'يرجى ادخال رقم الصنف الرئيسي',
-                'subname.required' => 'يرجى كتابة اسم الصنف الفرعي'
+                'cat_id.required' => 'يرجى ادخال رقم القسم الرئيسي',
+                'subname.required' => 'يرجى كتابة اسم القسم الفرعي'
 
         ]);
 
@@ -68,7 +69,7 @@ class SubCategoryController extends Controller
             'name' => $request->subname
         ]);
         $notification = array(
-            'message' => 'تم تعديل الصنف الفرعي بنجاح',
+            'message' => 'تم تعديل القسم الفرعي بنجاح',
             'alert-type' => 'warning'
         );
 
@@ -80,7 +81,7 @@ class SubCategoryController extends Controller
 
         SubCategory::where('id',$id)->delete();
         $notification = array(
-            'message' => 'تم حذف الصنف بنجاح',
+            'message' => 'تم حذف القسم الفرعي بنجاح',
             'alert-type' => 'error'
         );
         return redirect()->back()->with($notification);
@@ -101,17 +102,19 @@ class SubCategoryController extends Controller
             'subname' => 'required'
         ],
     [
-            'cat_id.required' => 'يرجى ادخال رقم الصنف الرئيسي',
-            'subname.required' => 'يرجى كتابة اسم الصنف الفرعي'
+            'cat_id.required' => 'يرجى ادخال رقم القسم الرئيسي',
+            'subname.required' => 'يرجى كتابة اسم القسم الفرعي'
 
     ]);
 
         SubCategory::insert([
             'category_id' => $request->cat_id,
             'name' => $request->subname,
+            'created_at' => Carbon::now()
+
         ]);
         $notification = array(
-            'message' => 'تم اضافة الصنف الفرعي بنجاح',
+            'message' => 'تم اضافة القسم الفرعي بنجاح',
             'alert-type' => 'success'
         );
 
@@ -121,7 +124,7 @@ class SubCategoryController extends Controller
 
     function AdminViewAllSubCat()
     {
-        $subcategories = SubCategory::paginate(5);
+        $subcategories = SubCategory::latest()->paginate(5);
         // $subcategories = DB::table('sub_categories')->latest()->first();
         return view('admin.subcategories.view',compact('subcategories'));
     }
@@ -139,8 +142,8 @@ class SubCategoryController extends Controller
             'subname' => 'required'
         ],
         [
-                'cat_id.required' => 'يرجى ادخال رقم الصنف الرئيسي',
-                'subname.required' => 'يرجى كتابة اسم الصنف الفرعي'
+                'cat_id.required' => 'يرجى ادخال رقم القسم الرئيسي',
+                'subname.required' => 'يرجى كتابة اسم القسم الفرعي'
 
         ]);
 
@@ -149,7 +152,7 @@ class SubCategoryController extends Controller
             'name' => $request->subname
         ]);
         $notification = array(
-            'message' => 'تم تعديل الصنف الفرعي بنجاح',
+            'message' => 'تم تعديل القسم الفرعي بنجاح',
             'alert-type' => 'warning'
         );
 
@@ -161,7 +164,7 @@ class SubCategoryController extends Controller
 
         SubCategory::where('id',$id)->delete();
         $notification = array(
-            'message' => 'تم حذف الصنف بنجاح',
+            'message' => 'تم حذف القسم الفرعي بنجاح',
             'alert-type' => 'error'
         );
         return redirect()->back()->with($notification);

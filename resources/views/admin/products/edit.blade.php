@@ -16,9 +16,9 @@
         <form class="form-horizontal" action="{{route('admin.update.product',$product->id)}}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="form-group">
-                <label for="input0" class="col-sm-2 control-label bring_right left_text">رقم الصنف الفرعي</label>
+                <label for="input0" class="col-sm-2 control-label bring_right left_text">رقم القسم الفرعي</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" name="subcat_id" placeholder="رقم الصنف الفرعي" value="{{$product->subcategory_id }}">
+                    <input type="text" class="form-control" name="subcat_id" placeholder="رقم القسم الفرعي" value="{{$product->subcategory_id }}">
                     @error('subcat_id')
                     <small class="text-danger">{{$message}}</small>
                     @enderror

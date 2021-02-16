@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
+
     function AddProduct()
     {
         return view('employee.products.create');
@@ -23,7 +24,7 @@ class ProductController extends Controller
             //'photo' => 'required',
             'description' => 'required',
          ],[
-                'subcat_id.required' => 'يرجى ادخال رقم الصنف الفرعي',
+                'subcat_id.required' => 'يرجى ادخال رقم القسم الفرعي',
                 'name.required' => 'يرجى كتابة اسم المنتج',
                 'price.required'=> 'يرجى ادخال سعر المنتج',
                 'description.required'=> 'يرجى كتابة وصف عن المنتج'
@@ -74,7 +75,7 @@ class ProductController extends Controller
             'description' => 'required'
         ],
         [
-            'subcat_id.required' => 'يرجى ادخال رقم الصنف الفرعي',
+            'subcat_id.required' => 'يرجى ادخال رقم القسم الفرعي',
             'name.required' => 'يرجى كتابة اسم المنتج',
             'price.required'=> 'يرجى ادخال سعر المنتج',
             'description.required'=> 'يرجى كتابة وصف عن المنتج'
@@ -153,7 +154,7 @@ class ProductController extends Controller
             'price' => 'required',
             'description' => 'required',
          ],[
-                'subcat_id.required' => 'يرجى ادخال رقم الصنف الفرعي',
+                'subcat_id.required' => 'يرجى ادخال رقم القسم الفرعي',
                 'name.required' => 'يرجى كتابة اسم المنتج',
                 'price.required'=> 'يرجى ادخال سعر المنتج',
                 'description.required'=> 'يرجى كتابة وصف عن المنتج'
@@ -204,7 +205,7 @@ class ProductController extends Controller
             'description' => 'required'
         ],
         [
-            'subcat_id.required' => 'يرجى ادخال رقم الصنف الفرعي',
+            'subcat_id.required' => 'يرجى ادخال رقم القسم الفرعي',
             'name.required' => 'يرجى كتابة اسم المنتج',
             'price.required'=> 'يرجى ادخال سعر المنتج',
             'description.required'=> 'يرجى كتابة وصف عن المنتج'
@@ -261,6 +262,13 @@ class ProductController extends Controller
             'alert-type' => 'error'
         );
         return redirect()->back()->with($notification);
+
+    }
+
+
+    public function show(Product $product)
+    {
+        return view('products.show')->with('product',$product);
 
     }
 

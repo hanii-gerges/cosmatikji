@@ -11,13 +11,13 @@
 
 <!--Start Site Main Options and Data-->
 <div class="panel panel-default view_users" style="margin: 10px;">
-    <div class="panel-heading text-right h4">عرض كل الأصناف الرئيسية</div>
+    <div class="panel-heading text-right h4">عرض كل الأقسام الرئيسية</div>
 
     <table class="table">
         <tr class="h4 text-center">
             <td class="">#</td>
-            <td class="">اسم الصنف الرئيسي</td>
-            <td class="">اسم الصنف الفرعي</td>
+            <td class="">اسم القسم الرئيسي</td>
+            <td class="">اسم القسم الفرعي</td>
             <td class="">التحكم</td>
         </tr>
 

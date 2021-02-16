@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 
+
 use Illuminate\Http\Request;
 use App\Models\Category;
+use App\Models\SubCategory;
 
 class CategoryController extends Controller
 {
@@ -19,13 +21,13 @@ class CategoryController extends Controller
             'name' => 'required',
         ],
         [
-            'name.required' => 'يرجى كتابة اسم الصنف الرئيسي',
+            'name.required' => 'يرجى كتابة اسم القسم الرئيسي',
             ]);
         Category::insert([
             'name' => $request->name
             ]);
             $notification = array(
-                'message' => 'تم اضافة الصنف بنجاح',
+                'message' => 'تم اضافة القسم بنجاح',
                 'alert-type' => 'success'
             );
             return redirect()->back()->with($notification);
@@ -51,14 +53,14 @@ class CategoryController extends Controller
             'name' => 'required',
             ],
             [
-                'name.required' => 'يرجى كتابة اسم الصنف الرئيسي',
+                'name.required' => 'يرجى كتابة اسم القسم الرئيسي',
                 ]);
 
         Category::where('id',$id)->update([
             'name' => $request->name
         ]);
         $notification = array(
-            'message' => 'تم تعديل الصنف بنجاح',
+            'message' => 'تم تعديل القسم بنجاح',
             'alert-type' => 'warning'
         );
         return redirect()->back()->with($notification);
@@ -68,12 +70,13 @@ class CategoryController extends Controller
     function DeleteCat($id)
     {
         $notification = array(
-            'message' => 'تم حذف الصنف بنجاح',
+            'message' => 'تم حذف القسم بنجاح',
             'alert-type' => 'error'
         );
         Category::where('id' , $id)->delete();
         return redirect()->back()->with($notification);
     }
+
 
     //////////////////////////////////////////////////////////////////////////////////////////////////
     // Admin Functions
@@ -88,17 +91,18 @@ class CategoryController extends Controller
             'name' => 'required',
         ],
         [
-            'name.required' => 'يرجى كتابة اسم الصنف الرئيسي',
+            'name.required' => 'يرجى كتابة اسم القسم الرئيسي',
             ]);
         Category::insert([
             'name' => $request->name
             ]);
             $notification = array(
-                'message' => 'تم اضافة الصنف بنجاح',
+                'message' => 'تم اضافة القسم بنجاح',
                 'alert-type' => 'success'
             );
             return redirect()->back()->with($notification);
     }
+
     function AdminViewAllCat()
     {
         $categories = Category::paginate(5);
@@ -111,20 +115,28 @@ class CategoryController extends Controller
         return view('admin.categories.edit',compact('category'));
     }
 
+    public function showCategory(Category $category)
+    {
+        $products = SubCategory::where('category_id',$category->id)->first()->products;
+
+        return view('categories.show')->with('category',$category)
+                                      ->with('products',$products);
+    }
+
     function AdminUpdateCat(Request $request , $id)
     {
         $validationData = $request->validate([
             'name' => 'required',
             ],
             [
-                'name.required' => 'يرجى كتابة اسم الصنف الرئيسي',
+                'name.required' => 'يرجى كتابة اسم القسم الرئيسي',
                 ]);
 
         Category::where('id',$id)->update([
             'name' => $request->name
         ]);
         $notification = array(
-            'message' => 'تم تعديل الصنف بنجاح',
+            'message' => 'تم تعديل القسم بنجاح',
             'alert-type' => 'warning'
         );
         return redirect()->back()->with($notification);
@@ -133,7 +145,7 @@ class CategoryController extends Controller
     function AdminDeleteCat($id)
     {
         $notification = array(
-            'message' => 'تم حذف الصنف بنجاح',
+            'message' => 'تم حذف القسم بنجاح',
             'alert-type' => 'error'
         );
         Category::where('id' , $id)->delete();
