@@ -4,7 +4,7 @@
 @section('content')
 <!-- START HEADING SECTION -->
 <div class="about_content padding-top padding-bottom">
-    <div class="container">
+    <div class="container mt-10">
         <div class="row">
             <div class="col-12">
 

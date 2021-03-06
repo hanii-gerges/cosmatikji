@@ -1,6 +1,25 @@
 @extends('layouts.app')
 
 @section('content')
+
+<!--Slider Start-->
+<section id="slider-sec" class="slider-sec parallax" style="background: url('{{ asset('shop/img/banner-new.jpg')}}');">
+    <div class="overlay text-center d-flex justify-content-center align-items-center">
+        {{--  <div class="slide-contain">
+            <h4>Product Listing</h4>
+            <div class="crumbs">
+                <nav aria-label="breadcrumb" class="breadcrumb-items">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{{route('front.home')}}">الرئيسية</a></li>
+                        <li class="breadcrumb-item"><a href="product-listing.html">Product Listing</a></li>
+                    </ol>
+                </nav>
+            </div>
+        </div>  --}}
+    </div>
+</section>
+<!--slider sec end-->
+
 <!--main page content-->
 <section class="main" id="main">
     <!--content-->
@@ -34,9 +53,9 @@
                                 </div>
                                 <div class="col-lg-6 stand-img-des">
                                     <div class="d-inline-block">
-                                        <h2 class="gradient-text1">ادوات كهربائية</h2>
+                                        <h2 class="gradient-text1">{{ $cat->name }}</h2>
 
-                                        <a href="/categories/{{$cat->id}}" class="btn btn-outline-info">الذهاب للتسوق</a>
+                                        <a href="/categories/{{$cat->id}}" class="btn btn-outline-info">تسوّق</a>
                                     </div>
                                 </div>
                             </div>
@@ -50,8 +69,8 @@
                                 </div>
                                 <div class="col-lg-6 stand-img-des">
                                     <div class="d-inline-block">
-                                        <h2 class="gradient-text1">العناية بالبشرة</h2>
-                                        <a href="/categories/{{$cat->id}}" class="btn btn-outline-info">الذهاب للتسوق</a>
+                                        <h2 class="gradient-text1">{{ $cat->name }}</h2>
+                                        <a href="/categories/{{$cat->id}}" class="btn btn-outline-info">تسوّق</a>
                                     </div>
                                 </div>
                             </div>

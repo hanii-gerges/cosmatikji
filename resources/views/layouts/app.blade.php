@@ -50,7 +50,7 @@
 
 <!--Header Start-->
 
-<header id="header">
+<header id="header" style="border-bottom: .5px solid #cc4496;">
     <div class="upper-nav">
         <div class="container">
             <div class="row">
@@ -149,7 +149,7 @@
 </header>
 <!--Header End-->
 
-<!--Slider Start-->
+{{-- <!--Slider Start-->
 <section id="slider-sec" class="slider-sec parallax" style="background: url('{{ asset('shop/img/banner-new.jpg')}}');">
     <div class="overlay text-center d-flex justify-content-center align-items-center">
         {{--  <div class="slide-contain">
@@ -165,7 +165,7 @@
         </div>  --}}
     </div>
 </section>
-<!--slider sec end-->
+<!--slider sec end--> --}}
 
     @yield('content')
 

@@ -2,7 +2,7 @@
 
 @section('content')
 {{--  source https://www.solodev.com/blog/web-design/how-to-use-number-type-inputs-to-dynamically-change-a-shopping-cart-total.stml  --}}
-<div class="container mt-5 mb-5">
+<div class="container mb-5" style="margin-top: 200px;">
     <div class="row justify-content-center">
       <div class="col-xl-7 col-lg-8 col-md-7">
           

@@ -4,7 +4,7 @@
 <!-- Contact Us Start -->
 <section class="contact-sec" id="contact-sec">
 
-    <div class="container">
+    <div class="container mt-10">
         <div class="row">
             <div class="contact-box text-center text-md-right wow slideInRight" data-wow-delay=".8s">
                 <div class="c-box wow fadeInRight">
