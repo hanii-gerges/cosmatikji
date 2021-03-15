@@ -60,12 +60,9 @@ Route::get('/go/{id}',function($id){
 })->name('go');
 
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('dashboard');
-})->name('dashboard');
 
 // Admin Routes
-Route::middleware(['auth:sanctum', 'verified' , 'authadmin'])->get('/admin/dashboard', function () {
+Route::middleware(['auth:sanctum'])->get('/dashboard', function () {
     $users = count(User::where('utype','user')->get());
     $products = count(Product::all());
     $employees = count(User::where('utype','employee')->get());
@@ -77,110 +74,108 @@ Route::middleware(['auth:sanctum', 'verified' , 'authadmin'])->get('/admin/dashb
 
 Route::get('/home' , [AdminController::class , 'HomePage'])->name('home');
 Route::get('/logout' , [AdminController::class , 'logout'])->name('logout');
-Route::get('/create/employee/' , [AdminController::class , 'CreateEmployee'])->name('create.emp');
-Route::post('/store/employee/' , [AdminController::class , 'StoreEmployee'])->name('store.emp');
-Route::get('/view/all/employee/' , [AdminController::class , 'ViewAllEmp'])->name('view.all.emp');
-Route::get('/edit/employee/by/admin/{id}' , [AdminController::class , 'EditEmpByAdmin'])->name('admin.edit.emp');
-Route::post('/update/employee/by/admin/{id}' , [AdminController::class , 'UpdateEmpByAdmin'])->name('admin.update.emp');
-Route::get('/delete/employee/{id}' , [AdminController::class , 'DeleteEmp'])->name('delete.emp');
-Route::get('/admin/profile/' , [AdminController::class , 'AdminProfile'])->name('admin.profile');
-Route::post('/admin/update/profile/' , [AdminController::class , 'UpdateProfile'])->name('admin.update.profile');
+Route::get('/users/create' , [AdminController::class , 'CreateEmployee'])->name('create.emp');
+Route::post('/users' , [AdminController::class , 'StoreEmployee'])->name('store.emp');
+Route::get('/users' , [AdminController::class , 'ViewAllEmp'])->name('view.all.emp');
+Route::get('/users/{users}/edit' , [AdminController::class , 'EditEmpByAdmin'])->name('admin.edit.emp');
+Route::post('/users/{user}' , [AdminController::class , 'UpdateEmpByAdmin'])->name('admin.update.emp');
+Route::delete('/users/{user}' , [AdminController::class , 'DeleteEmp'])->name('delete.emp');
+Route::get('/users/{user}' , [AdminController::class , 'AdminProfile'])->name('admin.profile');
 Route::get('/admin/change/password/' , [AdminController::class , 'ChangePassword'])->name('admin.change.password');
 Route::post('/admin/update/password/' , [AdminController::class , 'UpdatePassword'])->name('admin.update.password');
-Route::get('/admin/add/photo/' , [AdminController::class , 'AddPhoto'])->name('admin.add.photo');
-Route::post('/admin/update/photo/' , [AdminController::class , 'StorePhoto'])->name('admin.store.photo');
+// Route::get('/admin/add/photo/' , [AdminController::class , 'AddPhoto'])->name('admin.add.photo');
+// Route::post('/admin/update/photo/' , [AdminController::class , 'StorePhoto'])->name('admin.store.photo');
 
 
 // Employee Routes
-Route::middleware(['auth:sanctum', 'verified' , 'authemployee'])->get('/employee/dashboard', function () {
-    $categories = count(Category::all());
-    $subcategories = count(SubCategory::all());
-    $products = count(Product::all());
-    return view('employee.dashboard',compact('categories','subcategories','products'));
-})->name('employee.dashboard');
+// Route::middleware(['auth:sanctum', 'verified'])->get('/employee/dashboard', function () {
+//     $categories = count(Category::all());
+//     $subcategories = count(SubCategory::all());
+//     $products = count(Product::all());
+//     return view('employee.dashboard',compact('categories','subcategories','products'));
+// })->name('employee.dashboard');
 
-Route::get('employee/home' , [EmployeeController::class , 'HomePage'])->name('emp.home');
-Route::get('employee/profile' , [EmployeeController::class , 'EmployeeProfile'])->name('employee.profile');
-Route::post('employee/update/profile' , [EmployeeController::class , 'EmployeeUpdateProfile'])->name('employee.update.profile');
-Route::get('employee/add/photo' , [EmployeeController::class , 'AddPhoto'])->name('employee.add.photo');
-Route::post('employee/store/photo' , [EmployeeController::class , 'StorePhoto'])->name('employee.store.photo');
-Route::get('employee/change/password' , [EmployeeController::class , 'ChangePassword'])->name('employee.change.password');
-Route::post('employee/update/password' , [EmployeeController::class , 'UpdatePassword'])->name('employee.update.password');
+// Route::get('employee/home' , [EmployeeController::class , 'HomePage'])->name('emp.home');
+// Route::get('employee/profile' , [EmployeeController::class , 'EmployeeProfile'])->name('employee.profile');
+// Route::post('employee/update/profile' , [EmployeeController::class , 'EmployeeUpdateProfile'])->name('employee.update.profile');
+// Route::get('employee/add/photo' , [EmployeeController::class , 'AddPhoto'])->name('employee.add.photo');
+// Route::post('employee/store/photo' , [EmployeeController::class , 'StorePhoto'])->name('employee.store.photo');
+// Route::get('employee/change/password' , [EmployeeController::class , 'ChangePassword'])->name('employee.change.password');
+// Route::post('employee/update/password' , [EmployeeController::class , 'UpdatePassword'])->name('employee.update.password');
 
 
 
 
 
 // Category Routes
-Route::get('employee/add/category' , [CategoryController::class , 'AddCat'])->name('create.cat');
-Route::post('employee/store/category' , [CategoryController::class , 'StoreCat'])->name('store.cat');
-Route::get('employee/view/all/categories' , [CategoryController::class , 'ViewAllCat'])->name('view.all.cat');
-Route::get('employee/edit/category/{id}' , [CategoryController::class , 'EditCat'])->name('edit.cat');
-Route::post('employee/update/category/{id}' , [CategoryController::class , 'UpdateCat'])->name('update.cat');
-Route::get('employee/delete/category/{id}' , [CategoryController::class , 'DeleteCat'])->name('delete.cat');
+// Route::get('employee/add/category' , [CategoryController::class , 'AddCat'])->name('create.cat');
+// Route::post('employee/store/category' , [CategoryController::class , 'StoreCat'])->name('store.cat');
+// Route::get('employee/view/all/categories' , [CategoryController::class , 'ViewAllCat'])->name('view.all.cat');
+// Route::get('employee/edit/category/{id}' , [CategoryController::class , 'EditCat'])->name('edit.cat');
+// Route::post('employee/update/category/{id}' , [CategoryController::class , 'UpdateCat'])->name('update.cat');
+// Route::get('employee/delete/category/{id}' , [CategoryController::class , 'DeleteCat'])->name('delete.cat');
 
 //Admin Category Routes
-Route::get('admin/add/category' , [CategoryController::class , 'AdminAddCat'])->name('admin.create.cat');
-Route::post('admin/store/category' , [CategoryController::class , 'AdminStoreCat'])->name('admin.store.cat');
-Route::get('admin/view/all/categories' , [CategoryController::class , 'AdminViewAllCat'])->name('admin.view.all.cat');
-Route::get('admin/edit/category/{id}' , [CategoryController::class , 'AdminEditCat'])->name('admin.edit.cat');
-Route::post('admin/update/category/{id}' , [CategoryController::class , 'AdminUpdateCat'])->name('admin.update.cat');
-Route::get('admin/delete/category/{id}' , [CategoryController::class , 'AdminDeleteCat'])->name('admin.delete.cat');
+Route::get('/admin/categories' , [CategoryController::class , 'AdminViewAllCat'])->name('admin.view.all.cat');
+Route::get('/categories/create' , [CategoryController::class , 'AdminAddCat'])->name('admin.create.cat');
+Route::post('/categories' , [CategoryController::class , 'AdminStoreCat'])->name('admin.store.cat');
+Route::get('/categories/{category}/edit' , [CategoryController::class , 'AdminEditCat'])->name('admin.edit.cat');
+Route::post('/categories/{category}' , [CategoryController::class , 'AdminUpdateCat'])->name('admin.update.cat');
+Route::delete('/categories/{category}' , [CategoryController::class , 'AdminDeleteCat'])->name('admin.delete.cat');
 
 // SubCategory Route
-Route::get('employee/add/sub/category' , [SubCategoryController::class , 'AddSubCat'])->name('add.subCat');
-Route::post('employee/store/sub/category' , [SubCategoryController::class , 'StoreSubCat'])->name('store.subCat');
-Route::get('employee/view/all/sub/categories' , [SubCategoryController::class , 'ViewAllSubCat'])->name('view.all.subCat');
-Route::get('employee/edit/sub/category/{id}' , [SubCategoryController::class , 'EditSubCat'])->name('edit.subCat');
-Route::post('employee/update/sub/category/{id}' , [SubCategoryController::class , 'UpdateSubCat'])->name('update.subCat');
-Route::get('employee/delete/sub/category/{id}' , [SubCategoryController::class , 'DeleteSubCat'])->name('delete.subCat');
+// Route::get('employee/add/sub/category' , [SubCategoryController::class , 'AddSubCat'])->name('add.subCat');
+// Route::post('employee/store/sub/category' , [SubCategoryController::class , 'StoreSubCat'])->name('store.subCat');
+// Route::get('employee/view/all/sub/categories' , [SubCategoryController::class , 'ViewAllSubCat'])->name('view.all.subCat');
+// Route::get('employee/edit/sub/category/{id}' , [SubCategoryController::class , 'EditSubCat'])->name('edit.subCat');
+// Route::post('employee/update/sub/category/{id}' , [SubCategoryController::class , 'UpdateSubCat'])->name('update.subCat');
+// Route::get('employee/delete/sub/category/{id}' , [SubCategoryController::class , 'DeleteSubCat'])->name('delete.subCat');
 
 // Admin SubCategory Route
-Route::get('admin/add/sub/category' , [SubCategoryController::class , 'AdminAddSubCat'])->name('admin.add.subCat');
-Route::post('admin/store/sub/category' , [SubCategoryController::class , 'AdminStoreSubCat'])->name('admin.store.subCat');
-Route::get('admin/view/all/sub/categories' , [SubCategoryController::class , 'AdminViewAllSubCat'])->name('admin.view.all.subCat');
-Route::get('admin/edit/sub/category/{id}' , [SubCategoryController::class , 'AdminEditSubCat'])->name('admin.edit.subCat');
-Route::post('admin/update/sub/category/{id}' , [SubCategoryController::class , 'AdminUpdateSubCat'])->name('admin.update.subCat');
-Route::get('admin/delete/sub/category/{id}' , [SubCategoryController::class , 'AdminDeleteSubCat'])->name('admin.delete.subCat');
+Route::get('/subcategories' , [SubCategoryController::class , 'AdminViewAllSubCat'])->name('admin.view.all.subCat');
+Route::get('/subcategories/create' , [SubCategoryController::class , 'AdminAddSubCat'])->name('admin.add.subCat');
+Route::post('/subcategories' , [SubCategoryController::class , 'AdminStoreSubCat'])->name('admin.store.subCat');
+Route::get('/subcategories/{subcategory}/edit' , [SubCategoryController::class , 'AdminEditSubCat'])->name('admin.edit.subCat');
+Route::put('/subcategories/{subcategory}' , [SubCategoryController::class , 'AdminUpdateSubCat'])->name('admin.update.subCat');
+Route::delete('/subcategories/{subcategory}' , [SubCategoryController::class , 'AdminDeleteSubCat'])->name('admin.delete.subCat');
 
 
 // Product Routes
-Route::get('employee/add/product' , [ProductController::class ,'AddProduct'])->name('add.product');
-Route::post('employee/store/product' , [ProductController::class , 'StoreProduct'])->name('store.product');
-Route::get('employee/view/all/product' , [ProductController::class ,'ViewAllProducts'])->name('view.all.product');
-Route::get('employee/edit/product/{id}' , [ProductController::class ,'EditProduct'])->name('edit.product');
-Route::get('employee/delete/product{id}' , [ProductController::class ,'DeleteProduct'])->name('delete.product');
-Route::post('employee/update/product/{id}' , [ProductController::class , 'UpdateProduct'])->name('update.product');
+// Route::get('employee/add/product' , [ProductController::class ,'AddProduct'])->name('add.product');
+// Route::post('employee/store/product' , [ProductController::class , 'StoreProduct'])->name('store.product');
+// Route::get('employee/view/all/product' , [ProductController::class ,'ViewAllProducts'])->name('view.all.product');
+// Route::get('employee/edit/product/{id}' , [ProductController::class ,'EditProduct'])->name('edit.product');
+// Route::get('employee/delete/product{id}' , [ProductController::class ,'DeleteProduct'])->name('delete.product');
+// Route::post('employee/update/product/{id}' , [ProductController::class , 'UpdateProduct'])->name('update.product');
 
 // Admin Product Routes
-Route::get('admin/add/product' , [ProductController::class ,'AdminAddProduct'])->name('admin.add.product');
-Route::post('admin/store/product' , [ProductController::class , 'AdminStoreProduct'])->name('admin.store.product');
-Route::get('admin/view/all/product' , [ProductController::class ,'AdminViewAllProducts'])->name('admin.view.all.product');
-Route::get('admin/edit/product/{id}' , [ProductController::class ,'AdminEditProduct'])->name('admin.edit.product');
-Route::get('admin/delete/product{id}' , [ProductController::class ,'AdminDeleteProduct'])->name('admin.delete.product');
-Route::post('admin/update/product/{id}' , [ProductController::class , 'AdminUpdateProduct'])->name('admin.update.product');
+Route::get('/admin/products' , [ProductController::class ,'AdminViewAllProducts'])->name('admin.view.all.product');
+Route::get('/products/create' , [ProductController::class ,'AdminAddProduct'])->name('admin.add.product');
+Route::post('/products' , [ProductController::class , 'AdminStoreProduct'])->name('admin.store.product');
+Route::get('/products/{product}/edit' , [ProductController::class ,'AdminEditProduct'])->name('admin.edit.product');
+Route::put('products/{product}' , [ProductController::class , 'AdminUpdateProduct'])->name('admin.update.product');
+Route::delete('/products/{product}' , [ProductController::class ,'AdminDeleteProduct'])->name('admin.delete.product');
 
 // MultiPic Routes For Admin
-Route::get('/admin/add/product/images' , [MultiPicContoller::class ,'AddMulti'])->name('admin.add.multipic');
-Route::post('/admin/stroe/product/images' , [MultiPicContoller::class ,'Store'])->name('admin.store.multipic');
-Route::get('/admin/show/product/images/{id}' , [MultiPicContoller::class ,'MultiPic'])->name('admin.show.multipic');
-Route::get('/admin/delete/{id}' , [MultiPicContoller::class ,'Delete'])->name('admin.delete.img');
-Route::get('/admin/edit/{id}' , [MultiPicContoller::class ,'Edit'])->name('admin.edit.img');
-Route::post('/admin/update/image/{id}' , [MultiPicContoller::class ,'Update'])->name('admin.update.img');
+// Route::get('/admin/add/product/images' , [MultiPicContoller::class ,'AddMulti'])->name('admin.add.multipic');
+// Route::post('/admin/stroe/product/images' , [MultiPicContoller::class ,'Store'])->name('admin.store.multipic');
+// Route::get('/admin/show/product/images/{id}' , [MultiPicContoller::class ,'MultiPic'])->name('admin.show.multipic');
+// Route::get('/admin/delete/{id}' , [MultiPicContoller::class ,'Delete'])->name('admin.delete.img');
+// Route::get('/admin/edit/{id}' , [MultiPicContoller::class ,'Edit'])->name('admin.edit.img');
+// Route::post('/admin/update/image/{id}' , [MultiPicContoller::class ,'Update'])->name('admin.update.img');
 
 // MultiPic Routes For Employee
-Route::get('/employee/add/product/images' , [MultiPicContoller::class ,'EmpAddMulti'])->name('emp.add.multipic');
-Route::post('/employee/stroe/product/images' , [MultiPicContoller::class ,'EmpStore'])->name('emp.store.multipic');
-Route::get('/employee/show/product/images/{id}' , [MultiPicContoller::class ,'EmpMultiPic'])->name('emp.show.multipic');
-Route::get('/employee/delete/{id}' , [MultiPicContoller::class ,'EmpDelete'])->name('emp.delete.img');
-Route::get('/employee/edit/{id}' , [MultiPicContoller::class ,'EmpEdit'])->name('emp.edit.img');
-Route::post('/employee/update/image/{id}' , [MultiPicContoller::class ,'EmpUpdate'])->name('emp.update.img');
+// Route::get('/employee/add/product/images' , [MultiPicContoller::class ,'EmpAddMulti'])->name('emp.add.multipic');
+// Route::post('/employee/stroe/product/images' , [MultiPicContoller::class ,'EmpStore'])->name('emp.store.multipic');
+// Route::get('/employee/show/product/images/{id}' , [MultiPicContoller::class ,'EmpMultiPic'])->name('emp.show.multipic');
+// Route::get('/employee/delete/{id}' , [MultiPicContoller::class ,'EmpDelete'])->name('emp.delete.img');
+// Route::get('/employee/edit/{id}' , [MultiPicContoller::class ,'EmpEdit'])->name('emp.edit.img');
+// Route::post('/employee/update/image/{id}' , [MultiPicContoller::class ,'EmpUpdate'])->name('emp.update.img');
 
 
 // Admin Order Routes
-Route::get('/recived/orders' ,[OrderController::class,'adminRecived'])->name('admin.recived');
-Route::get('/unrecived/orders' ,[OrderController::class,'adminUnRecived'])->name('admin.unrecived');
-Route::post('/change/status' , [OrderController::class , 'updateOrderStatus'])->name('change.status');
+Route::get('/admin/orders' ,[OrderController::class,'adminRecived'])->name('admin.recived');
+Route::post('/orders/{order}' , [OrderController::class , 'updateOrderStatus'])->name('change.status');
 // Route::view('/unrecived/orders' ,'admin.orders.unrecived');
 //Route::post('/test' ,[MultiPicContoller::class,'Test'])->name('test');
 

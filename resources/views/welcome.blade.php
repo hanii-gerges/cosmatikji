@@ -2,41 +2,56 @@
 
 @section('content')
 
-<!--Slider Start-->
-<section id="slider-sec" class="slider-sec parallax" style="background: url('{{ asset('shop/img/banner-new.jpg')}}');">
-    <div class="overlay text-center d-flex justify-content-center align-items-center">
-        {{--  <div class="slide-contain">
-            <h4>Product Listing</h4>
-            <div class="crumbs">
-                <nav aria-label="breadcrumb" class="breadcrumb-items">
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{route('front.home')}}">الرئيسية</a></li>
-                        <li class="breadcrumb-item"><a href="product-listing.html">Product Listing</a></li>
-                    </ol>
-                </nav>
-            </div>
-        </div>  --}}
-    </div>
-</section>
-<!--slider sec end-->
 
 <!--main page content-->
 <section class="main" id="main">
     <!--content-->
     <div class="blog-content padding-top">
-        <div class="container">
-            <div class="row no-gutters">
-                <div class="col-12">
-                    <!-- START HEADING SECTION -->
-                        <div class="standalone-detail">
-                            <div class="row no-gutters">
-                                <div class="col-12 col-md-10 offset-md-1 col-lg-8 offset-lg-2  text-center wow slideInUp" data-wow-duration="2s">
-                                    <p class="sub-heading text-center">كوزماتيكجي</p>
-                                    <h1 class="heading">الاقسام الرئيسية</h1>
-                                    <p class="para_text m-auto" style="font-size:20px;">: يوجد لدى كوزماتيكجي تشكيلة من المنتجات المنتنوعة والتي تقسم الى مجموعة من التصنيفات</p>
+        <div class="container py-5">
+            <section class="best-products">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12 text-center">
+                            <div class="justify-content-right" style="margin-bottom: 30px">
+                                <h1 class="heading text-right">الاكثر مبيعا</h1>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="best-products-carousel owl-carousel owl-themesss">
+                        @foreach ($products as $product)
+                            
+                        <div class="item text-center">
+                            <div class="product">
+                                <div class="product-img">
+                                    <img src="{{ asset('shop/img/lipstick.jpg')}}">
+                                    <div class="overlay-img">
+                                        <div class="item-btns" id="addToCartFromCategory">
+                                            <a class="btn btn-view" id="{{ $product->id }}" title="اضف الى السلة"><i class="las la-shopping-cart"></i></a>
+                                            <a href="/products/{{ $product->id }}" class="btn btn-view" title="عرض المنتج"><i class="las la-eye"></i></a>
+
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="product-detail">
+                                    <h4 class="product-name">{{ $product->name }}</h4>
+                                    <p class="item-price">JD{{ $product->price }}</p>
+
+                                    
                                 </div>
                             </div>
                         </div>
+                        @endforeach
+                        
+                    </div>
+                    
+                </div>
+            </section>
+            <!--END LATEST ARRIVALS-->
+            <div class="row no-gutters mt-5">
+                <div class="col-12">
+                    
                         <!--content-->
                         <div class="standalone-area">
                             @php
@@ -48,7 +63,7 @@
                             <div class="row standalone-row align-items-center no-gutters">
                                 <div class="col-lg-6">
                                     <div class="blog-image wow hover-effect fadeInLeft">
-                                        <img src="{{asset('shop/img/newcategories.jpeg')}}" alt="image">
+                                        <img src="{{asset('shop/img/category.jpg')}}" alt="image">
                                     </div>
                                 </div>
                                 <div class="col-lg-6 stand-img-des">
@@ -64,7 +79,7 @@
                              <div class="row standalone-row align-items-center no-gutters">
                                 <div class="col-lg-6 order-lg-2">
                                     <div class="blog-image wow hover-effect fadeInLeft">
-                                        <img src="{{asset('shop/img/newcategories.jpeg')}}" alt="image">
+                                        <img src="{{asset('shop/img/category.jpg')}}" alt="image">
                                     </div>
                                 </div>
                                 <div class="col-lg-6 stand-img-des">

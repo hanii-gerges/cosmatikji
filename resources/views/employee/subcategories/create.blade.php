@@ -18,10 +18,14 @@
         <form class="form-horizontal" action="{{route('store.subCat')}}" method="POST">
             @csrf
             <div class="form-group">
-                <label for="input0" class="col-sm-2 control-label bring_right left_text">رقم القسم الرئيسي</label>
+                <label for="input0" class="col-sm-2 control-label bring_right left_text">القسم الرئيسي</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" name="cat_id" placeholder="رقم القسم الرئيسي">
-                    @error('cat_id')
+                    <select class="form-control" name="category_id" placeholder="رقم القسم الرئيسي">
+                        @foreach ($categories as $category)
+                            <option value="{{ $category->id }}">{{ $category->name }}</option>
+                        @endforeach
+                    </select>
+                    @error('category_id')
                     <small class="text-danger">{{$message}}</small>
                     @enderror
                 </div>

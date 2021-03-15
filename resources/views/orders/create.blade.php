@@ -38,17 +38,17 @@
                                 </div>
                             </div>
                             <div class="col-12 col-md-6">
-                                <input type="text" class="form-control" id="candidate_fname" name="firstName" placeholder="الاسم الاول" required="required" value="{{old('firstName')}}">
+                                <input type="text" class="form-control text-right" id="candidate_lname" name="lastName" placeholder="الاسم الاخير" required="required" value="{{old('lastName')}}">
                             </div>
                             <div class="col-12 col-md-6">
-                                <input type="text" class="form-control" id="candidate_lname" name="lastName" placeholder="الاسم الاخير" required="required" value="{{old('lastName')}}">
+                                <input type="text" class="form-control text-right" id="candidate_fname" name="firstName" placeholder="الاسم الاول" required="required" value="{{old('firstName')}}">
                             </div>
                             <div class="col-12">
-                                <input type="text" class="form-control" id="phone" name="phone" placeholder="رقم الهاتف" required="required" value="{{old('phone')}}">
+                                <input type="text" class="form-control text-right" id="phone" name="phone" placeholder="رقم الهاتف" required="required" value="{{old('phone')}}">
                             </div>
                             
                             <div class="col-12 form-group">
-                                <select class="form-control" id="sel1" name="state" required="required">
+                                <select class="form-control text-right" id="sel1" name="state" required="required">
                                   <option>عمان</option>
                                   <option>الزرقاء</option>
                                   <option>اربد</option>
@@ -66,7 +66,7 @@
                             </div>
 
                             <div class="col-12">
-                                <textarea class="form-control" id="user_message" name="address" placeholder="العنوان" rows="5" required="required">{{old('firstName')}}</textarea>
+                                <textarea class="form-control text-right" id="user_message" name="address" placeholder="العنوان" rows="5" required="required">{{old('firstName')}}</textarea>
                             </div>
                             <div class="col-12">
                                 <button class="btn web-btn user-contact rounded-pill contact_btn" type="submit">تأكيد الطلب

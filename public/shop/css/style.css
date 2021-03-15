@@ -2368,6 +2368,10 @@ transform: rotate(10deg);
     padding-bottom: 0;
 }
 
+.sub-links a{
+    color: #323232;
+}
+
 .product-listing .product-filter-nav .filter-heading{
     font-family: Poppins, sans-serif;
     font-size: 24px;
@@ -2768,6 +2772,8 @@ transform: rotate(10deg);
     padding-right: 16px !important;
 }
 
+
+
 .table td, .table th {
     padding: .5rem;
 }
@@ -2775,6 +2781,14 @@ transform: rotate(10deg);
 .tab-content .reviews .media{
     margin-bottom: 15px;
 }
+
+/* laravel pagination */
+.paginator ul, .paginator li{
+    margin: auto;
+    width: 50%;
+    text-align: center;
+}   
+
 
 
 .user-rating{

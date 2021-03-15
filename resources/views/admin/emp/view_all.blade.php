@@ -18,7 +18,6 @@
             <td class="" style="width:5%">#</td>
             <td class="" style="width:15%">اسم الموظف</td>
             <td class="" style="width:40%">البريد الالكتروني</td>
-            <td class="" style="width:20%">نوع الموظف</td>
             <td class="text-center" style="width:20%">التحكم</td>
         </tr>
 
@@ -26,11 +25,13 @@
             <tr class="text-center">
             <td class="english">{{$employee->id}}</td>
             <td>{{$employee->name}}</td>
-            <td>{{$employee->email}}</td>
-            <td class="english">{{$employee->utype}}</td>
+            <td>{{$employee->email}}</td>   
             <td class="text-center">
-                <a href="{{route('admin.edit.emp',$employee->id)}}" class="glyphicon glyphicon-pencil text-info"></a>
-                <a href="{{route('delete.emp',$employee->id)}}" class="glyphicon glyphicon-trash text-danger" onclick="return confirm('هل انتا متأكد من انك تريد حذف الموظف');"></a>
+                <form action="{{ route('delete.emp',['user'=> $employee->id]) }}" method=post>
+                    @csrf
+                    @method('delete')
+                <input type="submit" value="حذف" class="glyphicon glyphicon-trash text-danger" onclick="return confirm('هل انت متأكد من حذف الموظف');">
+                </form>
             </td>
         </tr>
             @endforeach

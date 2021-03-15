@@ -31,15 +31,14 @@
             <li><span class="glyphicon glyphicon-ok"></span><a href="#">إدارة المنتجات</a>
                 <ul class="drop_main_menu">
                     <li><a href="{{route('admin.add.product')}}">إضافة جديد</a></li>
-                    <li><a href="{{route('admin.add.multipic')}}">إضافة صور للمنتج</a></li>
                     <li><a href="{{route('admin.view.all.product')}}">عرض الكل</a></li>
                 </ul>
             </li>
 
             <li><span class="glyphicon glyphicon-lock"></span><a href="#">إدارة الطلبات</a>
                 <ul class="drop_main_menu">
-                    <li><a href="{{route('admin.unrecived')}}">عرض الطلبات غير المستلمة</a></li>
-                    <li><a href="{{route('admin.recived')}}">عرض الطلبات المستلمة</a></li>
+                    <li><a href="/orders?status=0">عرض الطلبات غير المستلمة</a></li>
+                    <li><a href="/orders?status=1">عرض الطلبات المستلمة</a></li>
                 </ul>
             </li>
 

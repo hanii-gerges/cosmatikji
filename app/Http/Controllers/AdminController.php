@@ -42,15 +42,10 @@ class AdminController extends Controller
             'name' => 'required',
             'email' => 'required |email|unique:users',
             'password' => 'required |min:8',
-            'utype' => 'required'
         ]);
 
-        $data = array();
-        $data ['name'] = $request->name;
-        $data ['email'] = $request->email;
-        $data ['password'] = Hash::make($request->password);
-        $data ['utype'] = $request->utype;
-        DB::table('users')->insert($data);
+        $request['password'] = Hash::make($request->password);
+        User::create($request->all());
         $notification = array(
             'message' => 'تم اضافة العضو بنجاح',
             'alert-type' => 'success'
@@ -62,7 +57,7 @@ class AdminController extends Controller
 
     function ViewAllEmp()
     {
-        $employees = User::where('utype' , 'employee')->latest()->paginate(4);
+        $employees = User::paginate(10);
         return view('admin.emp.view_all' , compact('employees'));
     }
 
@@ -86,13 +81,13 @@ class AdminController extends Controller
         return redirect()->back()->with($notification);
     }
 
-    function DeleteEmp($id)
+    function DeleteEmp(User $user)
     {
+        $user->delete();
         $notification = array(
             'message' => 'تم حذف الموظف بنجاح',
-            'alert-type' => 'error'
+            'alert-type' => 'success'
         );
-        DB::table('users')->where('id',$id)->delete();
         return redirect()->back()->with($notification);
     }
 
@@ -148,12 +143,8 @@ class AdminController extends Controller
 
     function AdminProfile()
     {
-        if(Auth::user())
-        {
         $admin = User::find(Auth::user()->id);
         return view('admin.profile.my_profile' ,compact('admin'));
-        }
-
     }
 
     function UpdateProfile(Request $request)

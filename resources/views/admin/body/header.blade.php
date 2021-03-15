@@ -14,7 +14,11 @@
     <div class=" col-sm-4 col-xs-12 user_header_area bring_left left_text">
 
         <div class="user_info inline-block">
-            <img src="{{asset(Auth::user()->profile_photo_path)}}" alt="" class="img-circle">
+            @if(auth()->user()->getFirstMedia())
+            <img src="{{ auth()->user()->getFirstMedia()->getUrl() }}" alt="Product Image" class="img-circle">
+          @else
+            <img src="{{ asset('back-end/img/Admin.jpg') }}" alt="Product Image" class="img-circle">
+          @endif
             <span class="h4 nomargin user_name">{{Auth::user()->name}}</span>
             <span class="glyphicon glyphicon-cog"></span>
         </div>

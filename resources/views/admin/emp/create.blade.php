@@ -44,15 +44,7 @@
                     @enderror
                 </div>
             </div>
-            <div class="form-group">
-                <label for="input3" class="col-sm-2 control-label bring_right left_text">نوع المستخدم</label>
-                <div class="col-sm-10">
-                <select  class="form-control" name="utype">
-                    <option name="admin" value="admin">مدير</option>
-                    <option name="employee" value="employee">موظف</option>
-
-                </select>
-            </div>
+            
             </div>
 
             <div class="form-group">

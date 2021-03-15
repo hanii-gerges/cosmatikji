@@ -1,0 +1,16 @@
+-make nav as the scrolling nav
+-remove banner
+-product add to cart immediatly
+
+-arrows on best selling
+-sticky checkout summary                                        #
+-remove sticky nav                                              #
+-product add to cart/ view buttons below photo as well          #
+-subcategories circles                                          #
+-breadcrumbs remove categories                                  #
+-price/description toggle                                       #
+-alert proceed to checkout/continue                             #
+-change counter (same as product page)
+-total bold and bigger                                          #
+-checkout summary text alignment                                #
+-delete button (basket item)                                    #

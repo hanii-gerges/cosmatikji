@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Models\SubCategory;
 use Carbon\Carbon;
@@ -11,25 +12,27 @@ class SubCategoryController extends Controller
 {
     function AddSubCat()
     {
-        return view('employee.subcategories.create');
+        $categories = Category::all();
+        return view('employee.subcategories.create')->with('categories',$categories);
     }
 
     function StoreSubCat(Request $request)
     {
         $validationData = $request->validate([
-            'cat_id' => 'required',
-            'subname' => 'required'
+            'category_id' => 'required',
+            'name' => 'required'
         ],
     [
-            'cat_id.required' => 'يرجى ادخال رقم القسم الرئيسي',
-            'subname.required' => 'يرجى كتابة اسم القسم الفرعي'
+            'category_id.required' => 'يرجى ادخال رقم القسم الرئيسي',
+            'name.required' => 'يرجى كتابة اسم القسم الفرعي'
 
     ]);
 
-        SubCategory::insert([
-            'category_id' => $request->cat_id,
-            'name' => $request->subname,
+        SubCategory::create([
+            'category_id' => $request->category_id,
+            'name' => $request->name,
         ]);
+
         $notification = array(
             'message' => 'تم اضافة القسم الفرعي بنجاح',
             'alert-type' => 'success'
@@ -49,7 +52,8 @@ class SubCategoryController extends Controller
     function EditSubCat($id)
     {
         $subcategory = SubCategory::find($id);
-        return view('employee.subcategories.edit',compact('subcategory'));
+        $categories = Category::all();
+        return view('employee.subcategories.edit',compact('subcategory','categories'));
     }
 
     function UpdateSubCat(Request $request , $id)
@@ -92,24 +96,25 @@ class SubCategoryController extends Controller
     // Admin SubCategory Functions
     function AdminAddSubCat()
     {
-        return view('admin.subcategories.create');
+        $categories = Category::all();
+        return view('admin.subcategories.create')->with('categories',$categories);
     }
 
     function AdminStoreSubCat(Request $request)
     {
         $validationData = $request->validate([
-            'cat_id' => 'required',
-            'subname' => 'required'
+            'category_id' => 'required',
+            'name' => 'required'
         ],
     [
-            'cat_id.required' => 'يرجى ادخال رقم القسم الرئيسي',
-            'subname.required' => 'يرجى كتابة اسم القسم الفرعي'
+            'category_id.required' => 'يرجى ادخال رقم القسم الرئيسي',
+            'name.required' => 'يرجى كتابة اسم القسم الفرعي'
 
     ]);
 
-        SubCategory::insert([
-            'category_id' => $request->cat_id,
-            'name' => $request->subname,
+        SubCategory::create([
+            'category_id' => $request->category_id,
+            'name' => $request->name,
             'created_at' => Carbon::now()
 
         ]);

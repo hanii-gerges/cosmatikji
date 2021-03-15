@@ -118,7 +118,7 @@ class ProductController extends Controller
             ]);
             $notification = array(
                 'message' => 'تم تعديل المنتج بنجاح',
-                'alert-type' => 'warning'
+                'alert-type' => 'success'
             );
             return redirect()->back()->with($notification);
 
@@ -131,7 +131,7 @@ class ProductController extends Controller
         Product::where('id',$id)->delete();
         $notification = array(
             'message' => 'تم حذف المنتج بنجاح',
-            'alert-type' => 'error'
+            'alert-type' => 'success'
         );
         return redirect()->back()->with($notification);
 

@@ -15,7 +15,7 @@
 
 
     <div class="form">
-        <form class="form-horizontal" action="{{route('admin.store.cat')}}" method="POST">
+        <form class="form-horizontal" action="{{route('admin.store.cat')}}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="form-group">
                 <label for="input0" class="col-sm-2 control-label bring_right left_text">اسم القسم</label>
@@ -24,6 +24,12 @@
                     @error('name')
                     <small class="text-danger">{{$message}}</small>
                     @enderror
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="image" class="col-sm-2 control-label bring_right left_text">اضف صورة</label>
+                <div class="col-sm-10">
+                    <input type="file" name="image" class="form-control-file">
                 </div>
             </div>
             <div class="form-group">

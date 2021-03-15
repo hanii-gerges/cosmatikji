@@ -24,7 +24,12 @@
                     @enderror
                 </div>
             </div>
-
+            <div class="form-group">
+                <label for="image" class="col-sm-2 control-label bring_right left_text">اضف صورة</label>
+                <div class="col-sm-10">
+                    <input type="file" name="image" class="form-control-file">
+                </div>
+            </div>
             <div class="form-group">
                 <div class="col-sm-12 left_text">
                     <button type="submit" class="btn btn-primary">تعديل بيانات القسم</button>

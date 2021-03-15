@@ -27,6 +27,8 @@
     <link href="{{asset('shop/css/blog.css')}}" rel="stylesheet">
     <link href="{{asset('shop/css/style.css')}}" rel="stylesheet">
     <link href="{{asset('shop/css/cart.css')}}" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
+
 
     {{-- toastr css link --}}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">
@@ -53,18 +55,15 @@
 <header id="header" style="border-bottom: .5px solid #cc4496;">
     <div class="upper-nav">
         <div class="container">
-            <div class="row">
-                <div class="col-12 col-lg-6 mt-auto mb-auto">
-
+            <div class="row justify-content-end">
+                <div class="col-10 col-lg-10 d-flex justify-content-center align-items-center">
+                    <a class="navbar-brand mt-0" href="/"><img style="width: 110px" src="{{ asset('shop/img/logo.png') }}"></a>
                 </div>
-                <div class="col-12 col-lg-6 mt-auto mb-auto d-lg-flex justify-content-center justify-content-lg-end">
+                <div class="col-1 col-lg-1 mt-0 mb-auto d-lg-flex justify-content-center justify-content-lg-end">
                     <ul class="shop-details d-flex">
                        
                         <li><a href="/carts/{{ session('cart') }}"><i class="las la-shopping-cart"></i></a></li>
                     </ul>
-                </div>
-                <div class="col-12 d-flex justify-content-center align-items-center">
-                    <a class="navbar-brand" href="/"><img src="{{ asset('shop/img/logo.png') }}"></a>
                 </div>
             </div>
         </div>
@@ -86,7 +85,7 @@
                             @foreach($categories as $category)
                             <li class="nav-item dropdown">
                                 <a href="/categories/{{ $category->id }}">
-                                <div class="dropbtn">{{ $category->name }}</div>
+                                <div class="dropbtn" style="font-size: 18px">{{ $category->name }}</div>
                                 </a>
                                 <div class="dropdown-content text-right">
                                     @foreach($category->subcategories as $subcategory)
@@ -95,7 +94,7 @@
                                 </div>
                             </li>
                             @endforeach
-                            <a class="nav-link active" href="/">الرئيسية</a></li>
+                            <a class="nav-link active" style="font-size: 18px" href="/">الرئيسية</a></li>
                         </ul>
                     </div>
                 </div>
@@ -252,6 +251,7 @@
 <script src="{{asset('shop/js/nouislider.min.js')}}"></script>
 <script src="{{asset('shop/js/script.js')}}"></script>
 <script src="{{asset('shop/js/cart.js')}}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
 <script>
     $(document).ready(function() {
         recalculateCart();
@@ -266,6 +266,13 @@
         $('#addToCart').click(function() {
             addToCart(this);
         });
+        
+        $('#addToCartFromCategory a:first-child').click(function() {
+            addToCart(this);
+        });
+
+        
+
 
         $('.remove-item button').click(function() {
             removeItem(this);
@@ -285,7 +292,10 @@
             var shipping = $('#shipping').children('option:selected').val();
             if(shipping == '0')
             {
-                alert('الرجاء اختيار منطقة الشحن');
+                $.alert({
+                    title: '',
+                    content: 'الرجاء اختيار منطقة الشحن',
+                });
                 return false;
             }
             addTotalToCart(this);
@@ -361,8 +371,17 @@
         }
 
         function addToCart(addButton) {
-            var productId = $(addButton).parent().parent().children().children('input').attr('id');
-            var productCount = $(addButton).parent().parent().children().children('input').val();
+
+            if($(addButton).parent().attr('id') == 'addToCartFromCategory' || $(addButton).parent().parent().attr('id') == 'addToCartFromCategory')
+            {
+                var productId = $(addButton).attr('id');
+                var productCount = 1;
+            }
+            else
+            {
+                var productId = $(addButton).parent().parent().children().children('input').attr('id');
+                var productCount = $(addButton).parent().parent().children().children('input').val();
+            }
             var url = "/cartitems/addToCart";
             console.log(productId);
             console.log(productCount);
@@ -382,6 +401,30 @@
                         {{ session()->forget('message') }}
                 @endif
 
+                {{--  alert('{{ url()->current() }} \n'+ window.location.href);  --}}
+                if(window.location.origin + "/carts/{{ session('cart') }}" != "{{ url()->current() }}")
+                $.confirm({
+                    title: '!تمت الاضافة',
+                    content: '',
+                    type: '',
+                    typeAnimated: true,
+                    buttons: {
+                        stay: {
+                            text: 'متابعة',
+                            //btnClass: 'btn-red',
+                            action: function(){
+                                
+                            }
+                        },
+                        go: {
+                            text: 'سلتي',
+                            //btnClass: 'btn-red',
+                            action: function(){
+                                location.href = "/carts/{{ session('cart') }}";
+                            }
+                        }
+                    }
+                });
             },
             error: function (data) {
                 console.log('Error:', data);

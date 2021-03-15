@@ -90,16 +90,23 @@ class CategoryController extends Controller
             'name' => 'required',
         ],
         [
-            'name.required' => 'يرجى كتابة اسم القسم الرئيسي',
-            ]);
-        Category::insert([
+            'name.required' => 'هذا الحقل مطلوب',
+        ]);
+
+        $category = Category::create([
             'name' => $request->name
-            ]);
-            $notification = array(
-                'message' => 'تم اضافة القسم بنجاح',
-                'alert-type' => 'success'
-            );
-            return redirect()->back()->with($notification);
+        ]);
+
+        if(request('image')){
+            $category->addMediaFromRequest('image')->toMediaCollection();
+        }
+
+        $notification = array(
+            'message' => 'تم اضافة القسم بنجاح',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->back()->with($notification);
     }
 
     function AdminViewAllCat()
@@ -124,7 +131,7 @@ class CategoryController extends Controller
             session(['cart' => $cart->id,'item' => []]);
         }
 
-        $products = SubCategory::where('category_id',$category->id)->first()->products()->paginate(9);
+        $products = SubCategory::where('category_id',$category->id)->first()->products()->paginate(12);
         $categories = Category::all();
         
         return view('categories.show')->with('category',$category)
@@ -133,18 +140,23 @@ class CategoryController extends Controller
                                       ->with('cart',$cart);
     }
 
-    function AdminUpdateCat(Request $request , $id)
+    function AdminUpdateCat(Request $request , Category $category)
     {
         $validationData = $request->validate([
-            'name' => 'required',
-            ],
-            [
-                'name.required' => 'يرجى كتابة اسم القسم الرئيسي',
-                ]);
-
-        Category::where('id',$id)->update([
-            'name' => $request->name
+        'name' => 'required',
+        ],
+        [
+            'name.required' => 'يرجى كتابة اسم القسم الرئيسي',
         ]);
+
+        $category->update([
+            'name' => $request->name,
+        ]);
+
+        if(request('image')){
+            $category->addMediaFromRequest('image')->toMediaCollection();
+        }
+
         $notification = array(
             'message' => 'تم تعديل القسم بنجاح',
             'alert-type' => 'warning'
@@ -170,7 +182,7 @@ class CategoryController extends Controller
             config(['lifetime' => 43200,'expire_on_close' => true]);
             session(['cart' => $cart->id,'item' => []]);
         }
-        $products = $subcategory->products()->paginate(9);
+        $products = $subcategory->products()->paginate(12);
         $categories = Category::all();
 
         return view('categories.show')->with('category',$category)

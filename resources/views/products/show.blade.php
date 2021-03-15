@@ -12,7 +12,6 @@
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb text-center text-lg-right">
                             <li class="breadcrumb-item"><a href="/">الرئيسية</a></li>
-                            <li class="breadcrumb-item"><a href="/">التصنيفات</a></li>
                             <li class="breadcrumb-item" aria-current="page"><a href="/categories/{{ $product->subcategory->category->id }}">{{ $product->subcategory->category->name }}</a></li>
                             <li class="breadcrumb-item"><a href="/categories/{{ $product->subcategory->category->id }}/subcategories/{{ $product->subcategory->id }}">{{ $product->subcategory->name }}</a></li>
                         </ol>
@@ -30,7 +29,7 @@
                             <div class="wrapper">
                                 <div class="Gallery swiper-container img-magnifier-container" id="gallery">
                                     <div class="swiper-wrapper myimgs">
-                                        <div class="swiper-slide"> <a href="{{ asset('shop/img/item1.jpg') }}" data-fancybox="1" title="Zoom In"><img class="myimage" src="{{ asset('shop/img/item1.jpg') }}" alt="gallery"/></a></div>
+                                        <div class="swiper-slide"> <a href="{{ asset('shop/img/item1.jpg') }}" data-fancybox="1" title="Zoom In"><img class="myimage" src="{{ asset('shop/img/lipstick.jpg') }}" alt="gallery"/></a></div>
                                     </div>
                                 </div>
                                 <div class="Thumbs swiper-container" id="thumbs">
@@ -42,8 +41,8 @@
 
                         <div class="col-12 col-lg-6 text-center text-lg-right">
                             <div class="product-single-price">
+                                <p class="pro-description mb-5">{{ $product->description }}</p>
                                 <h4><span class="real-price">JD{{ $product->price }}</span> </h4>
-                                <p class="pro-description">{{ $product->description }}</p>
                             </div>
 
                             
